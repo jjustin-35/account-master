@@ -1,0 +1,9 @@
+**/.next
+**/public
+**/static
+**/node_modules
+**/dist
+**/package.json
+**/yarn.lock
+**/.eslintrc
+**/tsconfig.json

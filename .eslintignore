@@ -1,0 +1,6 @@
+**/node_modules/**
+**/public/**
+**/__mocks__/**
+**/.next
+**/next-env.d.ts
+**/next.config.js
