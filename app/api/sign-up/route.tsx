@@ -3,7 +3,7 @@ import { NextResponse as response } from 'next/server';
 import connectMongodb from '@/helpers/mongodb';
 import UserModel, { IUser } from '@/modals/user';
 
-export const POST = async (req: Request) => {
+export async function POST(req: Request) {
   try {
     const { email, password, nickname, avatar } = await req.json();
 
@@ -38,4 +38,4 @@ export const POST = async (req: Request) => {
       message: error.message,
     });
   }
-};
+}
