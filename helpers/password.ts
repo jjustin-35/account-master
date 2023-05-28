@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
 
-const encyptPassword = async (password: string): Promise<string | null> => {
+const encryptPassword = async (password: string): Promise<string | null> => {
   try {
     const hash = await bcrypt.hash(password, saltRounds);
     return hash;
@@ -25,4 +25,4 @@ export const comparePassword = async (
   }
 };
 
-export default encyptPassword;
+export default encryptPassword;

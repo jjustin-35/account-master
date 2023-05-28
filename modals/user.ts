@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import encyptPassword from '@/helpers/password';
+import encryptPassword from '@/helpers/password';
 
 export interface IUser {
   email: string;
@@ -31,7 +31,7 @@ const UserSchema = new Schema<IUser>({
 
 UserSchema.pre('save', async function (next) {
   const user: IUser = this;
-  const hashedPassword = await encyptPassword(user['password']);
+  const hashedPassword = await encryptPassword(user['password']);
   if (!hashedPassword) {
     return next(new Error('Error in hashing password'));
   }
