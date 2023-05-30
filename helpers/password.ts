@@ -12,7 +12,7 @@ const encryptPassword = async (password: string): Promise<string | null> => {
   }
 };
 
-export const comparePassword = async (
+export const compareHashPassword = async (
   password: string,
   hash: string,
 ): Promise<boolean> => {

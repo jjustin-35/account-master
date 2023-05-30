@@ -9,6 +9,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/jsx-runtime",
     "plugin:prettier/recommended"
   ],
@@ -32,12 +33,15 @@
   "plugins": [
     "react",
     "jest",
-    "prettier"
+    "prettier",
+    "@typescript-eslint"
   ],
   "rules": {
     "react/prop-types": 0,
     "no-console": 0,
     "require-yield": 0,
-    "prettier/prettier": ["error", {"jsxSingleQuote": false}]
+    "prettier/prettier": ["error", {"jsxSingleQuote": false}],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"]
   }
 }

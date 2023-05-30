@@ -1,7 +1,7 @@
 import { NextResponse as response } from 'next/server';
 
 import connectMongodb from '@/helpers/mongodb';
-import UserModel, { IUser } from '@/modals/user';
+import UserModel, { IUser } from '@/models/user';
 
 export async function POST(req: Request) {
   try {
