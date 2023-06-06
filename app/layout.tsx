@@ -1,5 +1,6 @@
 import NextAuthProvider from '@/lib/provider';
 import StyledComponentsRegistry from '@/lib/styledComponentRegistry';
+import GlobalStyle from './_globalStyle';
 
 export const metadata = {
   title: '記帳大師',
@@ -15,7 +16,10 @@ export default function RootLayout({
     <html lang="zh-tw">
       <body>
         <NextAuthProvider>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <StyledComponentsRegistry>
+            <GlobalStyle />
+            {children}
+          </StyledComponentsRegistry>
         </NextAuthProvider>
       </body>
     </html>

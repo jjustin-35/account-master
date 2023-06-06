@@ -8,15 +8,16 @@ type Props = {
   link?: string;
   btnTheme?: string;
   size?: string;
+  round?: string;
   onClick?: () => void;
 };
 
-const Button = ({ text, link, btnTheme, size, onClick }: Props) => {
+const Button = ({ text, link, btnTheme, size, round, onClick }: Props) => {
   const isExternal = link?.startsWith('http');
   if (!isExternal && link) {
     return (
-      <Link href={link}>
-        <Wrapper btnTheme={btnTheme} size={size}>
+      <Link href={link} legacyBehavior>
+        <Wrapper $btnTheme={btnTheme} $size={size} $round={round}>
           <span>{text}</span>
         </Wrapper>
       </Link>
@@ -28,15 +29,16 @@ const Button = ({ text, link, btnTheme, size, onClick }: Props) => {
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        btnTheme={btnTheme}
-        size={size}
+        $btnTheme={btnTheme}
+        $size={size}
+        $round={round}
       >
         <span>{text}</span>
       </Wrapper>
     );
   }
   return (
-    <Wrapper btnTheme={btnTheme} size={size} onClick={onClick}>
+    <Wrapper $btnTheme={btnTheme} $size={size} $round={round} onClick={onClick}>
       <span>{text}</span>
     </Wrapper>
   );

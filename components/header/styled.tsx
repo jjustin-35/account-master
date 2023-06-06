@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { colors } from '@constants/styles';
+import { colors, breakpoints } from '@constants/styles';
 
-export const Wrapper = styled.div<{ isBoxShadow: boolean }>`
+export const Wrapper = styled.div<{ $isBoxShadow: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,8 +11,8 @@ export const Wrapper = styled.div<{ isBoxShadow: boolean }>`
   top: 0;
   z-index: 1;
 
-  ${({ isBoxShadow }) =>
-    isBoxShadow &&
+  ${({ $isBoxShadow }) =>
+    $isBoxShadow &&
     css`
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     `};
@@ -24,8 +24,12 @@ export const Logo = styled.img`
 `;
 
 export const Menu = styled.div`
-  display: flex;
-  align-items: center;
+  display: none;
+
+  @media (${breakpoints.laptop}) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const MenuItem = styled.a`
@@ -48,30 +52,36 @@ export const MenuGroup = styled.div`
 `;
 
 export const ButtonGroup = styled.div`
-  display: flex;
-  align-items: center;
+  display: none;
 
-  a {
-    margin-right: 24px;
+  @media (${breakpoints.tablet}) {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin-right: 16px;
+    }
   }
 `;
 
-export const BurgarMenuWrapper = styled.div<{ isOpen: boolean }>`
+export const BurgarMenuWrapper = styled.div<{ $isOpen: boolean }>`
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
   span {
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 4px;
+    border-radius: 99px;
     background-color: #000000;
     transition: all 0.3s;
 
     &:nth-child(1) {
       top: 0;
 
-      ${({ isOpen }) =>
-        isOpen &&
+      ${({ $isOpen }) =>
+        $isOpen &&
         css`
           top: 50%;
           transform: translateY(-50%) rotate(45deg);
@@ -81,8 +91,8 @@ export const BurgarMenuWrapper = styled.div<{ isOpen: boolean }>`
     &:nth-child(2) {
       top: 50%;
       transform: translateY(-50%);
-      ${({ isOpen }) =>
-        isOpen &&
+      ${({ $isOpen }) =>
+        $isOpen &&
         css`
           opacity: 0;
         `};
@@ -91,12 +101,16 @@ export const BurgarMenuWrapper = styled.div<{ isOpen: boolean }>`
     &:nth-child(3) {
       bottom: 0;
 
-      ${({ isOpen }) =>
-        isOpen &&
+      ${({ $isOpen }) =>
+        $isOpen &&
         css`
           bottom: 50%;
           transform: translateY(50%) rotate(-45deg);
         `};
     }
+  }
+
+  @media (${breakpoints.laptop}) {
+    display: none;
   }
 `;

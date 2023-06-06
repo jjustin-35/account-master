@@ -18,11 +18,13 @@ export default {
       text: 'Sign In',
       link: '/signin',
       btnTheme: 'primary',
+      round: 'pill',
     },
     {
       text: 'Sign Up',
       link: '/signup',
       btnTheme: 'secondary',
+      round: 'pill',
     },
   ],
   signOutButton: [
