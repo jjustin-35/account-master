@@ -1,25 +1,25 @@
 import styled, { css } from 'styled-components';
+import { colors } from '@/constants/styles';
 
 const themes = {
   primary: css`
-    background-color: #000000;
-    border: 1px solid #000000;
+    background-color: ${colors.primary};
+    color: #ffffff;
+  `,
+  secondary: css`
+    background-color: ${colors.secondary};
+    border: 1px solid ${colors.secondary};
     color: #ffffff;
 
     &:hover {
       background-color: #ffffff;
-      color: #000000;
+      color: ${colors.secondary};
     }
   `,
-  secondary: css`
+  primaryOutline: css`
     background-color: #ffffff;
-    border: 1px solid #000000;
-    color: #000000;
-
-    &:hover {
-      background-color: #000000;
-      color: #ffffff;
-    }
+    border: 1px solid ${colors.primary};
+    color: ${colors.primary};
   `,
 };
 

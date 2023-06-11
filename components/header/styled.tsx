@@ -19,8 +19,7 @@ export const Wrapper = styled.div<{ $isBoxShadow: boolean }>`
 `;
 
 export const Logo = styled.img`
-  max-width: 100px;
-  max-height: 40px;
+  max-width: 150px;
 `;
 
 export const Menu = styled.div`
@@ -67,7 +66,7 @@ export const ButtonGroup = styled.div`
 export const BurgarMenuWrapper = styled.div<{ $isOpen: boolean }>`
   position: relative;
   width: 30px;
-  height: 30px;
+  height: 24px;
   cursor: pointer;
   span {
     position: absolute;
@@ -76,6 +75,7 @@ export const BurgarMenuWrapper = styled.div<{ $isOpen: boolean }>`
     border-radius: 99px;
     background-color: #000000;
     transition: all 0.3s;
+    transform: scale(0.8);
 
     &:nth-child(1) {
       top: 0;
@@ -84,13 +84,13 @@ export const BurgarMenuWrapper = styled.div<{ $isOpen: boolean }>`
         $isOpen &&
         css`
           top: 50%;
-          transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg) scale(1);
         `};
     }
 
     &:nth-child(2) {
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-50%) scale(0.8);
       ${({ $isOpen }) =>
         $isOpen &&
         css`
@@ -105,7 +105,7 @@ export const BurgarMenuWrapper = styled.div<{ $isOpen: boolean }>`
         $isOpen &&
         css`
           bottom: 50%;
-          transform: translateY(50%) rotate(-45deg);
+          transform: translateY(50%) rotate(-45deg) scale(1);
         `};
     }
   }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 import { Container } from '@/constants/styles';
 import Button from '../button';
@@ -58,7 +59,9 @@ const Header = () => {
   return (
     <Container>
       <Wrapper $isBoxShadow={isBoxShadow}>
-        <Logo {...data.logo} />
+        <Link href="/">
+          <Logo {...data.logo} />
+        </Link>
         <MenuGroup>
           <Menu>
             {data.menu.map((item, idx) => (

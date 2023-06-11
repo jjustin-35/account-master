@@ -1,6 +1,6 @@
 export default {
   logo: {
-    src: '/images/logo.svg',
+    src: '/images/common/account_master_header_logo.svg',
     alt: 'header-logo',
   },
   menu: [
@@ -23,7 +23,7 @@ export default {
     {
       text: 'Sign Up',
       link: '/signup',
-      btnTheme: 'secondary',
+      btnTheme: 'primaryOutline',
       round: 'pill',
     },
   ],
