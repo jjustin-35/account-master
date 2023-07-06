@@ -1,9 +1,9 @@
-import { Model, Schema, model } from 'mongoose';
+import { Model, Schema, model, models } from 'mongoose';
 import encryptPassword, { compareHashPassword } from '@/helpers/password';
 
 export interface IUser {
   email: string;
-  nickname: string;
+  username: string;
   password: string;
   avatar?: string;
 }
@@ -20,7 +20,7 @@ const UserSchema = new Schema<IUser, UserModelType, IUserMethods>({
     required: true,
     unique: true,
   },
-  nickname: {
+  username: {
     type: String,
     required: true,
     default: 'master user',
@@ -51,4 +51,4 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-export default model<IUser, UserModelType>('User', UserSchema);
+export default models.User || model<IUser, UserModelType>('User', UserSchema);

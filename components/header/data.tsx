@@ -13,10 +13,9 @@ export default {
       link: '/about',
     },
   ],
-  signInButton: [
+  signInButtons: [
     {
       text: 'Sign In',
-      link: '/signin',
       btnTheme: 'primary',
       round: 'pill',
     },
@@ -27,11 +26,11 @@ export default {
       round: 'pill',
     },
   ],
-  signOutButton: [
+  signOutButtons: [
     {
       text: 'Sign Out',
-      link: '/signout',
       btnTheme: 'primary',
+      round: 'pill',
     },
   ],
 };

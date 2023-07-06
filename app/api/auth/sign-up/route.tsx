@@ -1,15 +1,15 @@
 import { NextResponse as response } from 'next/server';
 
 import connectMongodb from '@/helpers/mongodb';
-import UserModel, { IUser } from '@/models/user';
+import User, { IUser } from '@/models/user';
 
 export async function POST(req: Request) {
   try {
-    const { email, password, nickname, avatar } = await req.json();
+    const { email, password, username, avatar } = await req.json();
 
     await connectMongodb();
 
-    const user = await UserModel.findOne({ email });
+    const user = await User.findOne({ email });
 
     if (user) {
       return response.json({
@@ -18,10 +18,10 @@ export async function POST(req: Request) {
       });
     }
 
-    const newUser = new UserModel<IUser>({
+    const newUser = new User<IUser>({
       email,
       password,
-      nickname,
+      username,
       avatar,
     });
 

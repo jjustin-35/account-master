@@ -3,6 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import FacebookProvider from 'next-auth/providers/facebook';
 
+import connectMongodb from '@/helpers/mongodb';
 import User from '@/models/user';
 
 export const authOptions: NextAuthOptions = {
@@ -21,6 +22,8 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         const { email, password } = credentials;
         try {
+          await connectMongodb();
+
           const user = await User.findOne({ email });
           if (!user) {
             return null;
@@ -31,9 +34,9 @@ export const authOptions: NextAuthOptions = {
             return null;
           }
 
-          const { _id, nickname, avatar } = user;
+          const { _id, email: userEmail, username, avatar } = user;
 
-          return { id: _id.toString(), nickname, avatar, email };
+          return { id: _id.toString(), username, avatar, userEmail };
         } catch (error) {
           console.log(error);
           return null;

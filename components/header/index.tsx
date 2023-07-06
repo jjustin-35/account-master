@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import Link from 'next/link';
+
+import useWindowSize from '@/helpers/useWindowSize';
 
 import { Container } from '@/constants/styles';
 import Button from '../button';
+import MobileMenu from './mobileMenu';
 import {
   Wrapper,
   Logo,
@@ -34,12 +37,21 @@ const BurgerMenu = ({
 const Header = () => {
   if (!data) return;
   const { data: session } = useSession();
-  const buttonData = session ? data.signOutButton : data.signInButton;
+  const buttonData = session ? data.signOutButtons : data.signInButtons;
   const [isBoxShadow, setIsBoxShadow] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { width: windowWidth } = useWindowSize();
+  const isTablet = windowWidth < 1024;
 
   const clickHandler = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const authHandler = () => {
+    if (session) {
+      return signOut();
+    }
+    return signIn();
   };
 
   const scrollHandler = () => {
@@ -72,12 +84,13 @@ const Header = () => {
           </Menu>
           <ButtonGroup>
             {buttonData.map((item, idx) => (
-              <Button key={idx} {...item} />
+              <Button key={idx} {...item} onClick={authHandler} />
             ))}
           </ButtonGroup>
           <BurgerMenu onClick={clickHandler} isOpen={isMenuOpen} />
         </MenuGroup>
       </Wrapper>
+      {isTablet && <MobileMenu isMenuOpen={isMenuOpen} menu={data.menu} />}
     </Container>
   );
 };
