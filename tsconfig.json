@@ -27,6 +27,7 @@
       "@config/*": ["./config/*"],
       "@constants/*": ["./constants/*"],
       "@lib/*": ["./lib/*"],
+      "@redux/*": ["./redux/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

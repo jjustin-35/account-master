@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 import useWindowSize from '@/helpers/useWindowSize';
@@ -36,8 +36,8 @@ const BurgerMenu = ({
 
 const Header = () => {
   if (!data) return;
-  const { data: session } = useSession();
-  const buttonData = session ? data.signOutButtons : data.signInButtons;
+  const { data: user } = useSession();
+  const buttonData = user ? data.signOutButtons : data.signInButtons;
   const [isBoxShadow, setIsBoxShadow] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { width: windowWidth } = useWindowSize();
@@ -48,7 +48,7 @@ const Header = () => {
   };
 
   const authHandler = () => {
-    if (session) {
+    if (user) {
       return signOut();
     }
     return signIn();
