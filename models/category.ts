@@ -1,13 +1,11 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
 interface CustomCategory {
-  custom_category: [
-    {
-      name: string;
-      category_name: string;
-      type_name: string;
-    },
-  ];
+  custom_category: {
+    name: string;
+    category_name: string;
+    type_name: string;
+  }[];
 }
 
 const CustomCategorySchema = new Schema<CustomCategory>({
@@ -29,4 +27,5 @@ const CustomCategorySchema = new Schema<CustomCategory>({
   ],
 });
 
-export default model<CustomCategory>('CustomCategory', CustomCategorySchema);
+export default models.CustomCategory ||
+  model<CustomCategory>('CustomCategory', CustomCategorySchema);

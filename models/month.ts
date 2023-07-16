@@ -1,6 +1,6 @@
 // import { model, Schema, Model } from 'mongoose';
 
-export interface IDay {
+export interface Day {
   date: Date;
   weekDay: string;
 }

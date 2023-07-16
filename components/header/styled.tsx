@@ -16,10 +16,14 @@ export const Wrapper = styled.div<{ $isBoxShadow: boolean }>`
     css`
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     `};
+
+  a {
+    display: block;
+  }
 `;
 
 export const Logo = styled.img`
-  max-width: 150px;
+  max-height: 48px;
 `;
 
 export const Menu = styled.div`

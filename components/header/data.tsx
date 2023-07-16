@@ -1,6 +1,6 @@
 export default {
   logo: {
-    src: '/images/common/account_master_header_logo.svg',
+    src: '/images/common/account_master_logo.svg',
     alt: 'header-logo',
   },
   menu: [
