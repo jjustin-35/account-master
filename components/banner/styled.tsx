@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints } from '@/constants/styles';
+import breakpoints from '@/helpers/styles/breakpoints';
 
 export const Outer = styled.div`
   padding: 24px 0;

@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import useWindowSize from '@/helpers/useWindowSize';
 
-import { Container } from '@/constants/styles';
+import { Container } from '@/helpers/styles/globalStyles';
 import Button from '../button';
 import MobileMenu from './mobileMenu';
 import {
