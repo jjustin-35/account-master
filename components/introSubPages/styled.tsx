@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding: 20px 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-`;
-
-export const Logo = styled.img`
-  max-height: 48px;
 `;

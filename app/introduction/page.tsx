@@ -1,11 +1,9 @@
-import IntroHeader from '@/components/IntroHeader';
-import Banner from '@/components/banner';
+import IntroContent from '@/containers/introContent';
 
 const Introduction = () => {
   return (
     <>
-      <IntroHeader />
-      <Banner variant="introduction" />
+      <IntroContent />
     </>
   );
 };

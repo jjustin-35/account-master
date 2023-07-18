@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode, useEffect, useState, Children } from 'react';
 
 import { useSingleElementSize } from '@/helpers/useElementSize';

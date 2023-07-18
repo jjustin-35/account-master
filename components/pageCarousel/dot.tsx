@@ -1,3 +1,5 @@
+'use client';
+
 import { DotsWrapper, Dot } from './styled';
 
 type Props = {
