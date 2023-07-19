@@ -10,27 +10,27 @@ type DataType = {
 };
 
 const data: DataType = {
-  introducton: [
+  introduction: [
     {
       image: {
-        src: '/images/icon-group/1.png',
-        alt: 'icon-group-1',
+        src: '/images/introduction/bar_chart_icon.svg',
+        alt: 'ic-bar-chart',
       },
-      text: 'text1',
+      text: '雙圖表',
     },
     {
       image: {
-        src: '/images/icon-group/2.png',
-        alt: 'icon-group-2',
+        src: '/images/introduction/user_icon.svg',
+        alt: 'ic-user',
       },
-      text: 'text2',
+      text: '帳戶連結',
     },
     {
       image: {
-        src: '/images/icon-group/3.png',
-        alt: 'icon-group-3',
+        src: '/images/introduction/coins_icon.svg',
+        alt: 'ic-coins',
       },
-      text: 'text3',
+      text: '資產管理',
     },
   ],
 };

@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 export const SlideWrapper = styled.div`
   display: flex;
   scroll-behavior: smooth;
+  height: 100%;
 `;
 
 export const Slide = styled.div`
@@ -22,7 +23,7 @@ export const Slide = styled.div`
 
 export const DotsWrapper = styled.div`
   position: fixed;
-  bottom: 24px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

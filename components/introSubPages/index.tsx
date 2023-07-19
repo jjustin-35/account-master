@@ -2,8 +2,9 @@
 
 import IntroHeader from '../introHeader';
 import Banner from '../banner';
+import IconGroup from '../iconGroup';
 
-import { Wrapper } from './styled';
+import { Wrapper, InnerWrapper } from './styled';
 
 const IntroSubPages = () => {
   const variant = 'introduction';
@@ -11,7 +12,10 @@ const IntroSubPages = () => {
     <>
       <Wrapper>
         <IntroHeader />
-        <Banner variant={variant} />
+        <InnerWrapper>
+          <Banner variant={variant} />
+          <IconGroup variant={variant} />
+        </InnerWrapper>
       </Wrapper>
     </>
   );
