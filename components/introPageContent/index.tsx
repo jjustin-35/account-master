@@ -19,6 +19,13 @@ const IntroPageContent = () => {
           <IconGroup variant={variant} />
         </InnerWrapper>
       </Wrapper>
+      <Wrapper>
+        <IntroPageHeader />
+        <InnerWrapper>
+          <Banner variant={variant} />
+          <IconGroup variant={variant} />
+        </InnerWrapper>
+      </Wrapper>
     </PageCarousel>
   );
 };
