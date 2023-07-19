@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import breakpoints from '@/helpers/styles/breakpoints';
 
-export const Outer = styled.div`
-  padding: 24px 0;
-`;
+export const Outer = styled.div``;
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
 
   @media (${breakpoints.laptop}) {
     flex-direction: row;

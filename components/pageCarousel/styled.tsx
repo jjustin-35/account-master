@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   position: relative;
   padding: 24px 0;
   overflow-x: hidden;
+  overflow-y: scroll;
   height: 100vh;
 `;
 
@@ -30,8 +31,8 @@ export const DotsWrapper = styled.div`
 `;
 
 export const Dot = styled.div<{ $isActive: boolean }>`
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: ${colors.dot_brown};
 

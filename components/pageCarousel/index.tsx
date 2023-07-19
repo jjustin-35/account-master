@@ -22,6 +22,27 @@ const PageCarousel = ({ children }: Props) => {
     setActivePage(index);
   };
 
+  const scrollHandler = () => {
+    if (slideWrapperRef.current) {
+      const elementWidth = slideWrapperSizes.width;
+      const activePage = Math.round(
+        slideWrapperRef.current.scrollLeft / elementWidth,
+      );
+      setActivePage(activePage);
+    }
+  };
+
+  useEffect(() => {
+    if (slideWrapperRef.current) {
+      slideWrapperRef.current.addEventListener('scroll', scrollHandler);
+    }
+    return () => {
+      if (slideWrapperRef.current) {
+        slideWrapperRef.current.removeEventListener('scroll', scrollHandler);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     if (slideWrapperRef.current) {
       const elementWidth = slideWrapperSizes.width;
