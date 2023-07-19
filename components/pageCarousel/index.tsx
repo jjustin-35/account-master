@@ -3,6 +3,7 @@
 import { ReactNode, useEffect, useState, Children } from 'react';
 
 import { useSingleElementSize } from '@/helpers/useElementSize';
+import useWindowSize from '@/helpers/useWindowSize';
 
 import Dots from './dot';
 import { Wrapper, SlideWrapper, Slide } from './styled';
@@ -15,40 +16,36 @@ const PageCarousel = ({ children }: Props) => {
   const [activePage, setActivePage] = useState(0);
   const { elementRef: slideWrapperRef, sizes: slideWrapperSizes } =
     useSingleElementSize<HTMLDivElement>();
+  const { width: windowWidth } = useWindowSize();
   const childrenArray = Children.toArray(children);
   const amount = childrenArray.length;
 
-  const clickHandler = () => (index: number) => {
+  const clickHandler = (index: number) => {
     setActivePage(index);
   };
 
   const scrollHandler = () => {
-    if (slideWrapperRef.current) {
-      const elementWidth = slideWrapperSizes.width;
-      const activePage = Math.round(
-        slideWrapperRef.current.scrollLeft / elementWidth,
-      );
-      setActivePage(activePage);
-    }
+    const elementWidth = slideWrapperSizes.width;
+    const scrollDistanse = slideWrapperRef.current.scrollLeft;
+    const currentPosition = Math.round(scrollDistanse / elementWidth);
+    return setActivePage(currentPosition);
   };
 
   useEffect(() => {
     if (slideWrapperRef.current) {
       slideWrapperRef.current.addEventListener('scroll', scrollHandler);
+
+      return () => {
+        window.removeEventListener('scroll', scrollHandler);
+      };
     }
-    return () => {
-      if (slideWrapperRef.current) {
-        slideWrapperRef.current.removeEventListener('scroll', scrollHandler);
-      }
-    };
-  }, []);
+  }, [slideWrapperRef.current, windowWidth]);
 
   useEffect(() => {
-    if (slideWrapperRef.current) {
-      const elementWidth = slideWrapperSizes.width;
-      slideWrapperRef.current.scrollLeft = elementWidth * activePage;
-    }
-  }, [activePage]);
+    const elementWidth = slideWrapperSizes.width;
+    const scrollDistanse = elementWidth * activePage;
+    slideWrapperRef.current.scrollLeft = scrollDistanse;
+  }, [activePage, windowWidth]);
 
   return (
     <Wrapper>

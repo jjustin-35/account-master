@@ -2,7 +2,7 @@
 
 import { Wrapper, Logo } from './styled';
 
-const IntroHeader = () => {
+const IntroPageHeader = () => {
   return (
     <Wrapper>
       <Logo src="/images/common/account_master_logo.svg" alt="img-logo" />
@@ -10,4 +10,4 @@ const IntroHeader = () => {
   );
 };
 
-export default IntroHeader;
+export default IntroPageHeader;

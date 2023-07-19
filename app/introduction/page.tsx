@@ -1,9 +1,9 @@
-import IntroContent from '@/containers/introContent';
+import IntroPageContent from '@/components/introPageContent';
 
 const Introduction = () => {
   return (
     <>
-      <IntroContent />
+      <IntroPageContent />
     </>
   );
 };

@@ -1,24 +1,26 @@
 'use client';
 
-import IntroHeader from '../introHeader';
+import PageCarousel from '../pageCarousel';
+import IntroPageHeader from '../introPageHeader';
 import Banner from '../banner';
 import IconGroup from '../iconGroup';
+// import IntroBanner from '../introBanner';
 
 import { Wrapper, InnerWrapper } from './styled';
 
-const IntroSubPages = () => {
+const IntroPageContent = () => {
   const variant = 'introduction';
   return (
-    <>
+    <PageCarousel>
       <Wrapper>
-        <IntroHeader />
+        <IntroPageHeader />
         <InnerWrapper>
           <Banner variant={variant} />
           <IconGroup variant={variant} />
         </InnerWrapper>
       </Wrapper>
-    </>
+    </PageCarousel>
   );
 };
 
-export default IntroSubPages;
+export default IntroPageContent;
