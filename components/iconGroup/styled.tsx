@@ -16,3 +16,8 @@ export const IconWrapper = styled.div`
     width: 100%;
   }
 `;
+
+export const Text = styled.p`
+  font-size: 14px;
+  text-align: center;
+`;
