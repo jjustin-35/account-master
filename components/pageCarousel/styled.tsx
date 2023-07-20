@@ -3,9 +3,8 @@ import colors from '@/helpers/styles/colors';
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 24px 0;
   scroll-behavior: smooth;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const SlideWrapper = styled.div`

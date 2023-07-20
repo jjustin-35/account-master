@@ -6,27 +6,28 @@ import Banner from '../banner';
 import IconGroup from '../iconGroup';
 // import IntroBanner from '../introBanner';
 
-import { Wrapper, InnerWrapper } from './styled';
+import { Wrapper, PageWrapper, InnerWrapper } from './styled';
 
 const IntroPageContent = () => {
   const variant = 'introduction';
   return (
-    <PageCarousel>
-      <Wrapper>
-        <IntroPageHeader />
-        <InnerWrapper>
-          <Banner variant={variant} />
-          <IconGroup variant={variant} />
-        </InnerWrapper>
-      </Wrapper>
-      <Wrapper>
-        <IntroPageHeader />
-        <InnerWrapper>
-          <Banner variant={variant} />
-          <IconGroup variant={variant} />
-        </InnerWrapper>
-      </Wrapper>
-    </PageCarousel>
+    <Wrapper>
+      <IntroPageHeader />
+      <PageCarousel>
+        <PageWrapper>
+          <InnerWrapper>
+            <Banner variant={variant} />
+            <IconGroup variant={variant} />
+          </InnerWrapper>
+        </PageWrapper>
+        <PageWrapper>
+          <InnerWrapper>
+            <Banner variant={variant} />
+            <IconGroup variant={variant} />
+          </InnerWrapper>
+        </PageWrapper>
+      </PageCarousel>
+    </Wrapper>
   );
 };
 
