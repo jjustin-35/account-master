@@ -2,11 +2,10 @@
 
 import PageCarousel from '../pageCarousel';
 import IntroPageHeader from '../introPageHeader';
-import Banner from '../banner';
-import IconGroup from '../iconGroup';
-// import IntroBanner from '../introBanner';
+import GuidePage from './introPages/guidePage';
+import FeaturePage from './introPages/featurePage';
 
-import { Wrapper, PageWrapper, InnerWrapper } from './styled';
+import { Wrapper } from './styled';
 
 const IntroPageContent = () => {
   const variant = 'introduction';
@@ -14,18 +13,8 @@ const IntroPageContent = () => {
     <Wrapper>
       <IntroPageHeader />
       <PageCarousel>
-        <PageWrapper>
-          <InnerWrapper>
-            <Banner variant={variant} />
-            <IconGroup variant={variant} />
-          </InnerWrapper>
-        </PageWrapper>
-        <PageWrapper>
-          <InnerWrapper>
-            <Banner variant={variant} />
-            <IconGroup variant={variant} />
-          </InnerWrapper>
-        </PageWrapper>
+        <GuidePage variant={variant} />
+        <FeaturePage />
       </PageCarousel>
     </Wrapper>
   );

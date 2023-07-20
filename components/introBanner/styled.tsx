@@ -36,10 +36,8 @@ export const Desc = styled.p<{ variant?: string }>`
 `;
 
 export const Image = styled.div`
-  max-width: 100%;
   margin-top: 24px;
-
-  img {
-    width: 100%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
