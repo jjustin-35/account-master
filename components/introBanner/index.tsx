@@ -1,3 +1,5 @@
+'use client';
+
 import { ImageType } from '@/constants/types/global';
 import { Wrapper, Content, Title, Desc, Image } from './styled';
 

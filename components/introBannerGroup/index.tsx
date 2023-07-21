@@ -1,3 +1,5 @@
+'use client';
+
 import IntroBanner from '../introBanner';
 import { Container } from '@/helpers/styles/globalStyles';
 import { Wrapper } from './styled';

@@ -27,6 +27,16 @@ const data: DataType = {
       },
     },
   ],
+  introPageCta: [
+    {
+      title: '誰適合使用？',
+      desc: '剛開始規劃金錢消費的新鮮人、記帳新手或想要一個簡單記帳的使用者。',
+      image: {
+        src: '/images/introduction/img_intro_page_cta.svg',
+        alt: 'img_intro_page_cta',
+      },
+    },
+  ],
 };
 
 export default data;

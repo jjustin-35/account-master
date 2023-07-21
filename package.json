@@ -27,13 +27,13 @@
     "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
     "styled-components": "^6.0.0-rc.2",
+    "swiper": "^10.0.4",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.7",
-    "babel-plugin-styled-components": "^2.1.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jest": "^27.2.1",

@@ -12,12 +12,12 @@ const fontColors = {
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 
   @media (${breakpoints.laptop}) {
     flex-direction: row;
     align-items: center;
-    gap: 48px;
+    gap: 40px;
   }
 `;
 
@@ -36,7 +36,6 @@ export const Desc = styled.p<{ variant?: string }>`
 `;
 
 export const Image = styled.div`
-  margin-top: 24px;
   display: flex;
   justify-content: center;
   align-items: center;

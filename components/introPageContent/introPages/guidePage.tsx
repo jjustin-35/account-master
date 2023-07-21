@@ -1,3 +1,5 @@
+'use client';
+
 import Banner from '@/components/banner';
 import IconGroup from '@/components/iconGroup';
 import { PageWrapper, InnerWrapper } from '../styled';

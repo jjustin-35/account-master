@@ -32,7 +32,7 @@ const PageCarousel = ({ children }: Props) => {
     setScrollPosition(slideWrapperRef.current.scrollLeft);
   };
 
-  const debouncedScrollHandler = debounce(scrollHandler, 200);
+  const debouncedScrollHandler = debounce(scrollHandler, 100);
 
   useEffect(() => {
     if (slideWrapperRef.current) {
@@ -48,22 +48,21 @@ const PageCarousel = ({ children }: Props) => {
   }, [slideWrapperRef.current, windowWidth]);
 
   useEffect(() => {
-    const scrollDistanse = elementWidth * activePage;
-    const offsetDistance = scrollPosition - scrollDistanse;
+    const offsetPages = Math.round(scrollPosition / elementWidth) - activePage;
     const isLastPage = activePage === amount - 1;
     const isFirstPage = activePage === 0;
 
-    if (offsetDistance === 0) return;
-    if (offsetDistance > 0) {
+    if (offsetPages === 0) return setActivePage(activePage);
+    if (offsetPages > 0) {
       return isLastPage
         ? setActivePage(activePage)
-        : setActivePage(activePage + 1);
+        : setActivePage(activePage + offsetPages);
     }
 
-    if (offsetDistance < 0) {
+    if (offsetPages < 0) {
       return isFirstPage
         ? setActivePage(activePage)
-        : setActivePage(activePage - 1);
+        : setActivePage(activePage + offsetPages);
     }
   }, [scrollPosition, windowWidth]);
 
