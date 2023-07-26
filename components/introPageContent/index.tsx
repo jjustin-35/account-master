@@ -1,6 +1,6 @@
 'use client';
 
-import PageCarousel from '../pageCarousel';
+import Swiper from '../swiper';
 import IntroPageHeader from '../introPageHeader';
 import GuidePage from './introPages/guidePage';
 import FeaturePage from './introPages/featurePage';
@@ -13,11 +13,11 @@ const IntroPageContent = () => {
   return (
     <Wrapper>
       <IntroPageHeader />
-      <PageCarousel>
+      <Swiper>
         <GuidePage variant={variant} />
         <FeaturePage />
         {/* <CtaPage /> */}
-      </PageCarousel>
+      </Swiper>
     </Wrapper>
   );
 };

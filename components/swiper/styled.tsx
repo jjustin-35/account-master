@@ -3,19 +3,23 @@ import colors from '@/helpers/styles/colors';
 
 export const Wrapper = styled.div`
   position: relative;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
   height: 100%;
 `;
 
-export const SlideWrapper = styled.div`
-  overflow-x: scroll;
+export const SwiperWrapper = styled.div<{ offset: number }>`
   display: flex;
+  touch-action: pan-y;
   scroll-behavior: smooth;
+  width: 100%;
   height: 100%;
+  transition: transform 0.3s ease-out;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  ${({ offset }) =>
+    offset &&
+    css`
+      transform: translateX(${offset}px);
+    `}
 `;
 
 export const Slide = styled.div`

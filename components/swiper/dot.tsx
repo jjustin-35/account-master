@@ -4,7 +4,7 @@ import { DotsWrapper, Dot } from './styled';
 
 type Props = {
   amount: number;
-  clickHandler: (index: number) => void;
+  clickHandler?: (index: number) => void;
   activePage: number;
 };
 
@@ -17,7 +17,7 @@ const Dots = ({ amount, clickHandler, activePage }: Props) => {
           <Dot
             key={idx}
             $isActive={isActive}
-            onClick={() => clickHandler(idx)}
+            onClick={clickHandler ? () => clickHandler(idx) : undefined}
           />
         );
       })}
