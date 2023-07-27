@@ -1,18 +1,14 @@
-import { useState, useEffect } from 'react';
+import { headers } from 'next/headers';
 
-const useMobileDetect = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const userAgent =
-      typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
-    const mobileDetectRegex =
-      /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i;
-
-    setIsMobile(mobileDetectRegex.test(userAgent));
-  }, []);
+const mobileDetect = () => {
+  const headersList = headers();
+  const userAgent = headersList.get('user-agent');
+  const mobileDetectRegex =
+    /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i;
+  console.log('useAgent', userAgent);
+  const isMobile = userAgent!.match(mobileDetectRegex);
 
   return { isMobile };
 };
 
-export default useMobileDetect;
+export default mobileDetect;
