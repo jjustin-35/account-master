@@ -21,6 +21,7 @@ const SwiperContainer = ({ children }: Props) => {
     scrollWidth: 0,
   });
   const [offset, setOffset, getOffsetRef] = useStateRef(0);
+  const [, setDirection, getDirectionRef] = useStateRef('' as 'left' | 'right');
   const [activePage, setActivePage] = useState(0);
   const slideWrapperRef = useRef<HTMLDivElement>(null);
   const minOffsetRef = useRef(0);
@@ -31,6 +32,8 @@ const SwiperContainer = ({ children }: Props) => {
   const swipeMoveHandler = (e: SwipeEvent) => {
     const currentX = getTouchEventData(e).clientX;
     const diff = startXRef.current - currentX;
+    const direction = diff > 0 ? 'right' : 'left';
+    setDirection(direction);
     const newOffset = currentOffsetRef.current - diff;
 
     setOffset(newOffset);
@@ -52,7 +55,9 @@ const SwiperContainer = ({ children }: Props) => {
       return offset;
     })();
 
-    const targetPage = changePageRound(moveOffset / offsetWidth);
+    const direction = getDirectionRef();
+    const pageMovePercent = moveOffset / offsetWidth;
+    const targetPage = changePageRound(pageMovePercent, direction);
     const swipeOffset = targetPage * offsetWidth;
     setActivePage(Math.abs(targetPage));
     setOffset(swipeOffset);
