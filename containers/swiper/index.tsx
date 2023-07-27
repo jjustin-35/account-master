@@ -2,7 +2,7 @@ import { ReactNode, useRef, useState, useEffect } from 'react';
 import Swiper from '@/components/swiper';
 
 import useStateRef from '@/helpers/useStateRef';
-import { getTouchEventData, changePageCount } from '@/helpers/ui';
+import { getTouchEventData, oneThirdRound } from '@/helpers/ui';
 
 type SwipeEvent = TouchEvent | MouseEvent;
 type ReactSwipeEvent<T> = React.TouchEvent<T> | React.MouseEvent<T>;
@@ -50,7 +50,7 @@ const SwiperContainer = ({ children }: Props) => {
       return offset;
     })();
 
-    const targetPage = changePageCount(moveOffset / offsetWidth);
+    const targetPage = oneThirdRound(moveOffset / offsetWidth);
     const swipeOffset = targetPage * offsetWidth;
     setActivePage(Math.abs(targetPage));
     setOffset(swipeOffset);
