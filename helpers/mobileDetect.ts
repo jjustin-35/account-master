@@ -5,7 +5,6 @@ const mobileDetect = () => {
   const userAgent = headersList.get('user-agent');
   const mobileDetectRegex =
     /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i;
-  console.log('useAgent', userAgent);
   const isMobile = userAgent!.match(mobileDetectRegex);
 
   return { isMobile };
