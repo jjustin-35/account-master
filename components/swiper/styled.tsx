@@ -3,14 +3,14 @@ import colors from '@/helpers/styles/colors';
 
 export const Wrapper = styled.div`
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   height: 100%;
+  max-width: 100%;
 `;
 
 export const SwiperWrapper = styled.div<{ offset: number }>`
   display: flex;
   touch-action: pan-y;
-  scroll-behavior: smooth;
   width: 100%;
   height: 100%;
   transition: transform 0.3s ease-out;
@@ -24,6 +24,7 @@ export const SwiperWrapper = styled.div<{ offset: number }>`
 
 export const Slide = styled.div`
   flex: 0 0 auto;
+  display: flex;
   width: 100%;
   height: 100%;
 `;

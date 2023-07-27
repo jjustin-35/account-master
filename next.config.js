@@ -5,6 +5,9 @@ const nextConfig = {
     ENV: process.env.ENV,
   },
   experimental: { serverComponentsExternalPackages: ["mongoose"] },
+  compiler: {
+    styledComponents: { displayName: true, ssr: true }
+  },
   webpack: (config) => {
     config.experiments = { ...config.experiments, topLevelAwait: true };
 
