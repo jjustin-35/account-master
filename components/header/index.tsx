@@ -20,13 +20,12 @@ import {
 } from './styled';
 import data from './data';
 
-const BurgerMenu = ({
-  onClick,
-  isOpen,
-}: {
+interface BugerMenuProps {
   onClick: () => void;
   isOpen: boolean;
-}) => (
+}
+
+const BurgerMenu = ({ onClick, isOpen }: BugerMenuProps) => (
   <BurgarMenuWrapper $isOpen={isOpen} onClick={onClick}>
     {[...Array.from({ length: 3 })].map((_, idx) => {
       return <span key={idx} />;

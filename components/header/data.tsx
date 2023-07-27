@@ -1,4 +1,16 @@
-export default {
+import { ImageType, ButtonType } from '@/constants/types/global';
+
+type DataType = {
+  logo: ImageType;
+  menu: {
+    text: string;
+    link: string;
+  }[];
+  signInButtons: ButtonType[];
+  signOutButtons: ButtonType[];
+};
+
+const data: DataType = {
   logo: {
     src: '/images/common/account_master_logo.svg',
     alt: 'header-logo',
@@ -34,3 +46,5 @@ export default {
     },
   ],
 };
+
+export default data;
