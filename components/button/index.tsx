@@ -1,18 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { ButtonType } from '@/constants/types/global';
 import { Wrapper } from './styled';
 
-type Props = {
-  text: string;
-  link?: string;
-  btnTheme?: string;
-  size?: string;
-  round?: string;
-  onClick?: () => void;
-};
-
-const Button = ({ text, link, btnTheme, size, round, onClick }: Props) => {
+const Button = ({ text, link, btnTheme, size, round, onClick }: ButtonType) => {
   const isExternal = link?.startsWith('http');
   if (!isExternal && link) {
     return (

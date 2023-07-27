@@ -1,13 +1,17 @@
 'use client';
 
 import IntroBannerGroup from '@/components/introBannerGroup';
+import CtaBanner from '@/components/ctaBanner';
 
-import { PageWrapper } from '../styled';
+import { PageWrapper, InnerWrapper } from '../styled';
 
 const CtaPage = () => {
   return (
     <PageWrapper>
-      <IntroBannerGroup variant="introPageCta" />
+      <InnerWrapper>
+        <IntroBannerGroup variant="introPageCta" />
+        <CtaBanner type="information" />
+      </InnerWrapper>
     </PageWrapper>
   );
 };

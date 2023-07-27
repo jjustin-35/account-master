@@ -9,7 +9,7 @@ const themes = {
   secondary: css`
     background-color: ${colors.secondary};
     border: 1px solid ${colors.secondary};
-    color: #ffffff;
+    color: #000000;
 
     &:hover {
       background-color: #ffffff;
@@ -17,7 +17,7 @@ const themes = {
     }
   `,
   primaryOutline: css`
-    background-color: #ffffff;
+    background-color: transparent;
     border: 1px solid ${colors.primary};
     color: ${colors.primary};
   `,
@@ -47,16 +47,21 @@ const borderRadius = {
   `,
 };
 
+export type ButtonTheme = keyof typeof themes;
+export type ButtonSize = keyof typeof sizes;
+export type ButtonRound = keyof typeof borderRadius;
+
 export const Wrapper = styled.a<{
   $btnTheme?: string;
   $size?: string;
   $round?: string;
 }>`
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: all 0.3s;
+  padding: 8px 16px;
 
   ${({ $btnTheme }) => themes[$btnTheme || 'primary']};
   ${({ $size }) => sizes[$size || 'medium']};
