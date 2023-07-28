@@ -8,7 +8,7 @@ type DataType = {
 };
 
 const data: DataType = {
-  information: {
+  introduction: {
     title: '心動不如馬上行動，<br/>開始體驗我們的服務！',
     button: {
       text: '馬上體驗',

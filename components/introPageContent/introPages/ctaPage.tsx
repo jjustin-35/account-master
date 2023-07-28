@@ -10,7 +10,7 @@ const CtaPage = () => {
     <PageWrapper>
       <InnerWrapper>
         <IntroBannerGroup variant="introPageCta" />
-        <CtaBanner type="information" />
+        <CtaBanner type="introduction" />
       </InnerWrapper>
     </PageWrapper>
   );
