@@ -5,13 +5,14 @@ import { redirect } from 'next/navigation';
 
 type Props = {
   children: React.ReactNode;
+  redirectPath?: string;
 };
 
-const Auth = ({ children }: Props) => {
+const Auth = ({ children, redirectPath }: Props) => {
   const { status } = useSession({
     required: true,
     onUnauthenticated: () => {
-      redirect('/');
+      redirect(redirectPath || '/');
     },
   });
 

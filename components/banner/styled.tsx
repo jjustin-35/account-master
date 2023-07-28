@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import breakpoints from '@/helpers/styles/breakpoints';
+import { Typography } from '@/helpers/styles/globalStyles';
+import { TypographyType } from '@/constants/types/global';
 
-export const Outer = styled.div``;
-
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ isReverse?: boolean }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ isReverse }) =>
+    isReverse ? 'column-reverse' : 'column'};
+  align-items: center;
   gap: 24px;
 
   @media (${breakpoints.laptop}) {
@@ -19,25 +21,26 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  width: 100%;
+`;
 
-export const Title = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
-  color: #000000;
+export const Title = styled.h1<TypographyType>`
+  font-size: ${({ fontSize }) => fontSize || 24}px;
+  font-weight: ${({ fontWeight }) => fontWeight || 'bold'};
+  color: ${({ color }) => color || '#000000'};
+  text-align: ${({ textAlign }) => textAlign || 'left'};
   margin-bottom: 16px;
 `;
 
-export const Desc = styled.p`
-  font-size: 16px;
-  line-height: 1.5;
-  color: #000000;
+export const Desc = styled.p<TypographyType>`
+  ${Typography}
 `;
 
 export const Image = styled.div`
   max-width: 100%;
 
   img {
-    width: 100%;
+    max-width: 100%;
   }
 `;

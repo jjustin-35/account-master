@@ -1,7 +1,7 @@
 'use client';
 
 import Swiper from '@/containers/swiper';
-import IntroPageHeader from '../introPageHeader';
+import IntroPageHeader from './introPageHeader';
 import GuidePage from './introPages/guidePage';
 import FeaturePage from './introPages/featurePage';
 import CtaPage from './introPages/ctaPage';

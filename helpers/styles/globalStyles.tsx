@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { TypographyType } from '@/constants/types/global';
 import breakpoints from './breakpoints';
 
 export const Container = styled.div`
@@ -19,4 +20,12 @@ export const Container = styled.div`
   @media (${breakpoints.desktop}) {
     max-width: 1080px;
   }
+`;
+
+export const Typography = css<TypographyType>`
+  font-size: ${({ fontSize }) => fontSize || '16px'};
+  font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
+  line-height: ${({ lineHeight }) => lineHeight || 'unset'};
+  color: ${({ color }) => color || '#000000'};
+  text-align: ${({ textAlign }) => textAlign || 'left'};
 `;

@@ -17,3 +17,11 @@ export type ButtonType = {
   round?: ButtonRound;
   onClick?: () => void;
 };
+
+export type TypographyType = {
+  textAlign?: 'left' | 'center' | 'right';
+  color?: string;
+  fontSize?: string;
+  fontWeight?: string;
+  lineHeight?: string;
+};
