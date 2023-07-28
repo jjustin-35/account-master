@@ -3,6 +3,12 @@ import colors from '@/helpers/styles/colors';
 
 export const InputWrapper = styled.div``;
 
+export const Label = styled.label`
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+`;
+
 export const Input = styled.input`
   width: 100%;
   font-size: 16px;

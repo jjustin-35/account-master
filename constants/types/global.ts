@@ -11,6 +11,7 @@ export type ImageType = {
 
 export type ButtonType = {
   text: string;
+  id?: string;
   link?: string;
   btnTheme?: ButtonTheme;
   size?: ButtonSize;
