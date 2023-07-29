@@ -18,14 +18,14 @@ const data: DataType = {
   tabs: [
     {
       text: '登入',
-      id: 'signin',
+      id: 'signIn',
       size: 'medium',
       round: 'pill',
       btnTheme: 'primary',
     },
     {
       text: '註冊',
-      id: 'signup',
+      id: 'signUp',
       size: 'medium',
       round: 'pill',
       btnTheme: 'primary',

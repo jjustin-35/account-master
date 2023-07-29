@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 import ButtonTabs from './buttonTabs';
@@ -8,7 +10,7 @@ import dataset from './data';
 
 const AuthForm = () => {
   const { tabs } = dataset;
-  const [activeTab, setActiveTab] = useState('signin');
+  const [activeTab, setActiveTab] = useState('signIn');
   const data = dataset[activeTab];
 
   const clickHandler = (id: string) => {
@@ -16,8 +18,8 @@ const AuthForm = () => {
   };
 
   return (
-    <Wrapper>
-      <Container>
+    <Container>
+      <Wrapper>
         <ButtonTabs
           tabs={tabs}
           activeTab={activeTab}
@@ -28,8 +30,8 @@ const AuthForm = () => {
             <InputField {...input} key={input.id} />
           ))}
         </Form>
-      </Container>
-    </Wrapper>
+      </Wrapper>
+    </Container>
   );
 };
 

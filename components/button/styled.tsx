@@ -29,11 +29,11 @@ const sizes = {
     font-size: 14px;
   `,
   medium: css`
-    padding: 8px 16px;
+    padding: 10px 20px;
     font-size: 16px;
   `,
   large: css`
-    padding: 10px 20px;
+    padding: 1px 24px;
     font-size: 20px;
   `,
 };

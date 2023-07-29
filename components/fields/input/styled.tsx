@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import colors from '@/helpers/styles/colors';
 
-export const InputWrapper = styled.div``;
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
 
 export const Label = styled.label`
   display: block;
   font-size: 16px;
-  margin-bottom: 8px;
 `;
 
 export const Input = styled.input`

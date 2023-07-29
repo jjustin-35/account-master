@@ -19,7 +19,7 @@ const InputField = ({
 }: InputType) => {
   return (
     <InputWrapper>
-      <Label>{label}</Label>
+      <Label htmlFor={name}>{label}</Label>
       <Input
         type={type}
         name={name}

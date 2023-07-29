@@ -8,7 +8,7 @@ export const Wrapper = styled.div<{ isReverse?: boolean }>`
   flex-direction: ${({ isReverse }) =>
     isReverse ? 'column-reverse' : 'column'};
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 
   @media (${breakpoints.laptop}) {
     flex-direction: row;
@@ -23,6 +23,9 @@ export const Wrapper = styled.div<{ isReverse?: boolean }>`
 
 export const Content = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const Title = styled.h1<TypographyType>`
@@ -30,7 +33,6 @@ export const Title = styled.h1<TypographyType>`
   font-weight: ${({ fontWeight }) => fontWeight || 'bold'};
   color: ${({ color }) => color || '#000000'};
   text-align: ${({ textAlign }) => textAlign || 'left'};
-  margin-bottom: 16px;
 `;
 
 export const Desc = styled.p<TypographyType>`

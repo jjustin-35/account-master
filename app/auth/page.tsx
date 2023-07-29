@@ -1,10 +1,11 @@
 import AuthBanner from '@/components/authPage/authBanner';
+import AuthForm from '@/components/authPage/authForm';
 
 const AuthPage = () => {
-  // const variant = 'auth';
   return (
     <>
       <AuthBanner />
+      <AuthForm />
     </>
   );
 };

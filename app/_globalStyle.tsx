@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
   html, body, div, span, iframe,
   h1, h2, h3, h4, h5, h6, p, a, img, ol, ul, li, fieldset, form, label, legend,
   article, aside, details, footer, header, menu, nav, output, section, summary,
-  time, mark, audio, video {
+  time, mark, audio, video, button, input, textarea {
       margin: 0;
       padding: 0;
       border: 0;
