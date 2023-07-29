@@ -14,7 +14,7 @@ type DataType = {
 };
 
 const data: DataType = {
-  introduction: {
+  onboarding: {
     title: {
       text: '記帳大師<br/>協助您輕鬆掌握財務狀況',
     },

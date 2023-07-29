@@ -3,9 +3,9 @@ import { redirect } from 'next/navigation';
 import mobileDetect from '@/helpers/mobileDetect';
 
 import Auth from '@/containers/auth';
-import IntroductionContent from '@/components/introduction';
+import IntroductionContent from '@/components/onboarding';
 
-const Introduction = () => {
+const Onboarding = () => {
   const { isMobile } = mobileDetect();
   if (!isMobile) redirect('/');
   return (
@@ -15,4 +15,4 @@ const Introduction = () => {
   );
 };
 
-export default Introduction;
+export default Onboarding;

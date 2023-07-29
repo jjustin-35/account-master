@@ -10,7 +10,7 @@ type DataType = {
 };
 
 const data: DataType = {
-  introduction: [
+  onboarding: [
     {
       image: {
         src: '/images/introduction/bar_chart_icon.svg',
