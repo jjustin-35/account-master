@@ -4,8 +4,9 @@ export interface InputType {
   label: string;
   name: string;
   type: 'text' | 'email' | 'password';
-  placeholder: string;
+  placeholder?: string;
   value?: string;
+  inputRef?: any;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -15,6 +16,7 @@ const InputField = ({
   type,
   placeholder,
   value,
+  inputRef,
   onChange,
 }: InputType) => {
   return (
@@ -26,6 +28,7 @@ const InputField = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        ref={(node: HTMLInputElement) => (inputRef.current[name] = node)}
       />
     </InputWrapper>
   );

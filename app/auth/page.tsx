@@ -1,11 +1,12 @@
-import AuthBanner from '@/components/authPage/authBanner';
-import AuthForm from '@/components/authPage/authForm';
+import { getProviders } from 'next-auth/react';
 
-const AuthPage = () => {
+import AuthPageContent from '@/containers/authPage';
+
+const AuthPage = async () => {
+  const providers = await getProviders();
   return (
     <>
-      <AuthBanner />
-      <AuthForm />
+      <AuthPageContent providers={providers} />
     </>
   );
 };

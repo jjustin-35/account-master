@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   ButtonTheme,
   ButtonSize,
@@ -16,7 +18,7 @@ export type ButtonType = {
   btnTheme?: ButtonTheme;
   size?: ButtonSize;
   round?: ButtonRound;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
 };
 
 export type TypographyType = {

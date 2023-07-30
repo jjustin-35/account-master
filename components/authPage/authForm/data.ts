@@ -1,40 +1,32 @@
 import { TypographyType, ButtonType } from '@/constants/types/global';
 import { InputType } from '@/components/fields/input';
 
-type FormType = {
+export type FormType = {
   title: {
     text: string;
   } & TypographyType;
+  tab: ButtonType;
   inputs: InputType[];
+  submit: ButtonType;
 };
 
 type DataType = {
-  tabs: ButtonType[];
   signIn: FormType;
   signUp: FormType;
 };
 
 const data: DataType = {
-  tabs: [
-    {
+  signIn: {
+    title: {
+      text: '登入',
+      textAlign: 'center',
+    },
+    tab: {
       text: '登入',
       id: 'signIn',
       size: 'medium',
       round: 'pill',
       btnTheme: 'primary',
-    },
-    {
-      text: '註冊',
-      id: 'signUp',
-      size: 'medium',
-      round: 'pill',
-      btnTheme: 'primary',
-    },
-  ],
-  signIn: {
-    title: {
-      text: '登入',
-      textAlign: 'center',
     },
     inputs: [
       {
@@ -50,11 +42,24 @@ const data: DataType = {
         placeholder: '請輸入密碼',
       },
     ],
+    submit: {
+      text: '登入',
+      size: 'medium',
+      round: 'pill',
+      btnTheme: 'primary',
+    },
   },
   signUp: {
     title: {
       text: '註冊',
       textAlign: 'center',
+    },
+    tab: {
+      text: '註冊',
+      id: 'signUp',
+      size: 'medium',
+      round: 'pill',
+      btnTheme: 'primary',
     },
     inputs: [
       {
@@ -82,6 +87,12 @@ const data: DataType = {
         placeholder: '請再次輸入密碼',
       },
     ],
+    submit: {
+      text: '註冊',
+      size: 'medium',
+      round: 'pill',
+      btnTheme: 'primary',
+    },
   },
 };
 
