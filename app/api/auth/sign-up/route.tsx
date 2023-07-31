@@ -5,7 +5,14 @@ import User, { IUser } from '@/models/user';
 
 export async function POST(req: Request) {
   try {
-    const { email, password, username, avatar } = await req.json();
+    const userData = await req.json();
+    if (!userData)
+      return response.json({
+        status: 'error',
+        message: 'Bad request',
+      });
+
+    const { email, password, username, avatar } = userData;
 
     await connectMongodb();
 
@@ -13,7 +20,7 @@ export async function POST(req: Request) {
 
     if (user) {
       return response.json({
-        status: 'exist',
+        status: 'fail',
         message: 'User already exist',
       });
     }

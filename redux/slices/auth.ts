@@ -1,15 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type Auth = {
-  user: {
-    name: string;
-    email: string;
-    image?: string;
-  };
+type AuthState = {
+  status: 'success' | 'fail' | 'error';
+  message: string;
 };
 
-const initialState: Auth = {
-  user: null,
+const initialState: AuthState = {
+  status: null,
+  message: null,
 };
 
 export const authSlice = createSlice({
@@ -17,10 +15,12 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     postUser: (state) => state,
-    postUserSucc: (state, action) => {
-      state.user = action.payload;
+    postUserSucc: (state, action: PayloadAction<AuthState>) => {
+      state = action.payload;
     },
-    postUserFail: (state) => state,
+    postUserFail: (state, action: PayloadAction<AuthState>) => {
+      state = action.payload;
+    },
   },
 });
 
