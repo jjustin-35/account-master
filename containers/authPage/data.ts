@@ -10,7 +10,7 @@ export type FormType = {
   submit: ButtonType;
 };
 
-type DataType = {
+export type DataType = {
   signIn: FormType;
   signUp: FormType;
 };

@@ -16,9 +16,11 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (state, action) => {
+    postUser: (state) => state,
+    postUserSucc: (state, action) => {
       state.user = action.payload;
     },
+    postUserFail: (state) => state,
   },
 });
 

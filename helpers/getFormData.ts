@@ -1,8 +1,8 @@
 import { isEmpty } from '@/helpers/object';
 
-export type FormRefType = React.MutableRefObject<{
-  [key: string]: HTMLInputElement;
-}>;
+export type FormRefType = React.MutableRefObject<
+  Record<string, HTMLInputElement>
+>;
 
 const getFormData = (ref: FormRefType) => {
   const formDataRef = ref.current;

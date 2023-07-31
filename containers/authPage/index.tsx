@@ -6,10 +6,13 @@ import { signIn } from 'next-auth/react';
 import getFormData, { FormRefType } from '@/helpers/getFormData';
 
 import AuthPageContent from '@/components/authPage';
+import dataset, { FormType } from './data';
 
 const AuthPageContainer = ({ providers }) => {
   const [activeTab, setActiveTab] = useState('signIn');
   const inputRef: FormRefType = useRef({});
+  const data: FormType = dataset[activeTab];
+  const tabs = Object.values(dataset).map((data) => data.tab);
 
   const clickHandler = (id: string) => {
     setActiveTab(id);
@@ -35,6 +38,8 @@ const AuthPageContainer = ({ providers }) => {
     <AuthPageContent
       authProviders={providers}
       activeTab={activeTab}
+      data={data}
+      tabs={tabs}
       inputRef={inputRef}
       clickHandler={clickHandler}
       submitHandler={submitHandler}
