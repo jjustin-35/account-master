@@ -45,7 +45,7 @@ const data: DataType = {
     submit: {
       text: '登入',
       size: 'medium',
-      round: 'pill',
+      round: 'normal',
       btnTheme: 'primary',
     },
   },
@@ -90,7 +90,7 @@ const data: DataType = {
     submit: {
       text: '註冊',
       size: 'medium',
-      round: 'pill',
+      round: 'normal',
       btnTheme: 'primary',
     },
   },
