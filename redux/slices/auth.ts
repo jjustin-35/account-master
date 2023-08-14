@@ -14,11 +14,10 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    postUser: (state) => state,
-    postUserSucc: (state, action: PayloadAction<AuthState>) => {
+    postSignupSucc: (state, action: PayloadAction<AuthState>) => {
       state = action.payload;
     },
-    postUserFail: (state, action: PayloadAction<AuthState>) => {
+    postSignupFail: (state, action: PayloadAction<AuthState>) => {
       state = action.payload;
     },
   },

@@ -2,8 +2,12 @@
 
 import React, { useRef, useState } from 'react';
 import { signIn } from 'next-auth/react';
+import { useDispatch } from 'react-redux';
+
+import { UserType } from '@/constants/types/modal';
 
 import getFormData, { FormRefType } from '@/helpers/getFormData';
+import { postSignup as postSignupAction } from '@/redux/sagaActions/auth';
 
 import AuthPageContent from '@/components/authPage';
 import dataset, { FormType } from './data';
@@ -13,6 +17,8 @@ const AuthPageContainer = ({ providers }) => {
   const inputRef: FormRefType = useRef({});
   const data: FormType = dataset[activeTab];
   const tabs = Object.values(dataset).map((data) => data.tab);
+  const dispatch = useDispatch();
+  const postSignup = (data: UserType) => dispatch(postSignupAction(data));
 
   const clickHandler = (id: string) => {
     setActiveTab(id);
@@ -27,7 +33,7 @@ const AuthPageContainer = ({ providers }) => {
     }
 
     if (activeTab === 'signUp') {
-      signIn('', data);
+      postSignup(data as UserType);
       return;
     }
 

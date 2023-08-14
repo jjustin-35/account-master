@@ -1,7 +1,9 @@
 import { NextResponse as response } from 'next/server';
 
+import { UserType } from '@/constants/types/modal';
+
 import connectMongodb from '@/helpers/mongodb';
-import User, { IUser } from '@/models/user';
+import User from '@/models/user';
 
 export async function POST(req: Request) {
   try {
@@ -25,7 +27,7 @@ export async function POST(req: Request) {
       });
     }
 
-    const newUser = new User<IUser>({
+    const newUser = new User<UserType>({
       email,
       password,
       username,
