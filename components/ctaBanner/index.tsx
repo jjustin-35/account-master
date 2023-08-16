@@ -1,4 +1,4 @@
-import { Container } from '@/helpers/styles/globalStyles';
+import { Container } from '@/constants/styles/globalStyles';
 import dataset from './data';
 import Button from '../button';
 import { Wrapper, Slogan, ButtonWrapper } from './styled';

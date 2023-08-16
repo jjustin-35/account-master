@@ -7,7 +7,7 @@ import { FormRefType } from '@/helpers/getFormData';
 
 import ButtonTabs from './buttonTabs';
 import InputField from '@/components/fields/input';
-import { Container } from '@/helpers/styles/globalStyles';
+import { Container } from '@/constants/styles/globalStyles';
 import { Wrapper, Form, ButtonWrapper, HorizonLineWrapper } from './styled';
 import Button from '@/components/button';
 import { FormType } from '@/containers/authPage/data';

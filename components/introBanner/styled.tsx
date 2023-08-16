@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import breakpoints from '@/helpers/styles/breakpoints';
+import breakpoints from '@/constants/styles/breakpoints';
 
 const titleColors = {
   default: '#000000',

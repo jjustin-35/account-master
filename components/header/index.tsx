@@ -6,7 +6,8 @@ import Link from 'next/link';
 
 import useWindowSize from '@/helpers/useWindowSize';
 
-import { Container } from '@/helpers/styles/globalStyles';
+import { Container } from '@/constants/styles/globalStyles';
+import { deviceSize } from '@/constants/styles/breakpoints';
 import Button from '../button';
 import MobileMenu from './mobileMenu';
 import {
@@ -40,7 +41,7 @@ const Header = () => {
   const [isBoxShadow, setIsBoxShadow] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { width: windowWidth } = useWindowSize();
-  const isTablet = windowWidth < 1024;
+  const isTablet = windowWidth < deviceSize.tablet;
 
   const clickHandler = () => {
     setIsMenuOpen(!isMenuOpen);

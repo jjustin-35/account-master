@@ -4,7 +4,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { authActions } from '../slices/auth';
 import { SIGNUP_PATH } from '@/constants/apiPath';
 
-const { postUser: postUserAction } = authActions;
+import { postSignup } from '../sagaActions/auth';
 
 function* postUser(action: PayloadAction) {
   const userData = action.payload;
@@ -18,17 +18,17 @@ function* postUser(action: PayloadAction) {
     });
     const respData = yield response.json();
     if (respData.status === 'error' || respData.status === 'fail') {
-      yield put(authActions.postUserFail(respData));
+      yield put(authActions.postSignupFail(respData));
       return;
     }
 
-    yield put(authActions.postUserSucc(respData));
+    yield put(authActions.postSignupSucc(respData));
   } catch (error) {
     console.log(error);
     yield put(
-      authActions.postUserFail({ status: 'error', message: error.message }),
+      authActions.postSignupFail({ status: 'error', message: error.message }),
     );
   }
 }
 
-export default [takeEvery(postUserAction.toString(), postUser)];
+export default [takeEvery(postSignup.toString(), postUser)];

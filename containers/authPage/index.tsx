@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useDispatch } from 'react-redux';
 
@@ -13,7 +14,11 @@ import AuthPageContent from '@/components/authPage';
 import dataset, { FormType } from './data';
 
 const AuthPageContainer = ({ providers }) => {
-  const [activeTab, setActiveTab] = useState('signIn');
+  const searchParams = useSearchParams();
+  const isSignUp = !!searchParams.get('isSignUp');
+  const initTab = isSignUp ? 'signUp' : 'signIn';
+
+  const [activeTab, setActiveTab] = useState(initTab);
   const inputRef: FormRefType = useRef({});
   const data: FormType = dataset[activeTab];
   const tabs = Object.values(dataset).map((data) => data.tab);

@@ -11,10 +11,15 @@ export type ImageType = {
   alt: string;
 };
 
+export type NextLinkHrefType = {
+  pathname: string;
+  query?: Record<string, string>;
+};
+
 export type ButtonType = {
   text: string;
   id?: string;
-  link?: string;
+  link?: string | NextLinkHrefType;
   btnTheme?: ButtonTheme;
   size?: ButtonSize;
   round?: ButtonRound;

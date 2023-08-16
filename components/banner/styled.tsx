@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import breakpoints from '@/helpers/styles/breakpoints';
-import { Typography } from '@/helpers/styles/globalStyles';
+import breakpoints from '@/constants/styles/breakpoints';
+import { Typography } from '@/constants/styles/globalStyles';
 import { TypographyType } from '@/constants/types/global';
 
 export const Wrapper = styled.div<{ isReverse?: boolean }>`

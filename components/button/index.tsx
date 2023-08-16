@@ -5,7 +5,7 @@ import { ButtonType } from '@/constants/types/global';
 import { Wrapper } from './styled';
 
 const Button = ({ text, link, btnTheme, size, round, onClick }: ButtonType) => {
-  const isExternal = link?.startsWith('http');
+  const isExternal = typeof link === 'string' && link?.startsWith('http');
   if (!isExternal && link) {
     return (
       <Link href={link} legacyBehavior>

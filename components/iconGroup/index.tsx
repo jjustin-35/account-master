@@ -1,7 +1,7 @@
 'use client';
 
 import { Wrapper, Item, IconWrapper, Text } from './styled';
-import { Container } from '@/helpers/styles/globalStyles';
+import { Container } from '@/constants/styles/globalStyles';
 import dataset from './data';
 
 interface Props {

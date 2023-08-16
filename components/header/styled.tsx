@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import colors from '@helpers/styles/colors';
-import breakpoints from '@/helpers/styles/breakpoints';
+import colors from '@/constants/styles/colors';
+import breakpoints from '@/constants/styles/breakpoints';
 
 export const Wrapper = styled.div<{ $isBoxShadow: boolean }>`
   display: flex;

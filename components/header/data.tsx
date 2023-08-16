@@ -33,7 +33,10 @@ const data: DataType = {
     },
     {
       text: 'Sign Up',
-      link: '/signup',
+      link: {
+        pathname: '/auth',
+        query: { isSignUp: 'true' },
+      },
       btnTheme: 'primaryOutline',
       round: 'pill',
     },

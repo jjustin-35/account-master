@@ -1,6 +1,6 @@
 'use client';
 
-import { Container } from '@/helpers/styles/globalStyles';
+import { Container } from '@/constants/styles/globalStyles';
 import { Wrapper, Content, Title, Desc, Image } from './styled';
 import dataset from './data';
 

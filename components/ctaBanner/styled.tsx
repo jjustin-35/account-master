@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '@/helpers/styles/colors';
+import colors from '@/constants/styles/colors';
 
 const bgColor = {
   default: colors.primary,

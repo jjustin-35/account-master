@@ -52,6 +52,9 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
   ],
+  pages: {
+    signIn: '/auth',
+  },
 };
 
 const handler = NextAuth(authOptions);
