@@ -1,11 +1,13 @@
 import { ImageType, ButtonType } from '@/constants/types/global';
 
+type MenuType = {
+  text: string;
+  link: string;
+};
+
 type DataType = {
   logo: ImageType;
-  menu: {
-    text: string;
-    link: string;
-  }[];
+  menu: MenuType[];
   signInButtons: ButtonType[];
   signOutButtons: ButtonType[];
 };
