@@ -34,12 +34,21 @@ const data: DataType = {
         label: '信箱',
         type: 'email',
         placeholder: '請輸入信箱',
+        isRequired: true,
       },
       {
         name: 'password',
         label: '密碼',
         type: 'password',
         placeholder: '請輸入密碼',
+        isRequired: true,
+      },
+      {
+        label: '確認密碼',
+        name: 'confirmPassword',
+        type: 'password',
+        placeholder: '請再次輸入密碼',
+        isRequired: true,
       },
     ],
     submit: {

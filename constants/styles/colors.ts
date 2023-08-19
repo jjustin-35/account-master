@@ -6,6 +6,7 @@ const colors = {
   dark: 'rgba(0, 0, 0, 0.8)',
   dot_brown: '#967c71',
   dot_brown_dark: '#421D18',
+  error: '#f9215a',
 };
 
 export type ColorsType = keyof typeof colors;

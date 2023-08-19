@@ -1,14 +1,13 @@
-import { FormRefType } from '@/helpers/getFormData';
-import { InputWrapper, Label, Input } from './styled';
+import { InputWrapper, Label, Input, ErrorMsg } from './styled';
 
 export interface InputType {
   label: string;
   name: string;
-  type: 'text' | 'email' | 'password';
+  type: 'text' | 'email' | 'password' | 'number' | 'tel';
+  errorMsg?: string;
   placeholder?: string;
   value?: string;
   isRequired?: boolean;
-  inputRef?: FormRefType;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -16,10 +15,10 @@ const InputField = ({
   label,
   name,
   type,
+  errorMsg,
   placeholder,
   value,
   isRequired,
-  inputRef,
   onChange,
 }: InputType) => {
   return (
@@ -32,8 +31,8 @@ const InputField = ({
         value={value}
         onChange={onChange}
         required={isRequired}
-        ref={(node: HTMLInputElement) => (inputRef.current[name] = node)}
       />
+      {errorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
     </InputWrapper>
   );
 };

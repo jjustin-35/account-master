@@ -25,3 +25,9 @@ export const Input = styled.input`
     border: 1px solid ${colors.primary};
   }
 `;
+
+export const ErrorMsg = styled.div`
+  color: ${colors.error};
+  font-size: 14px;
+  margin-top: 4px;
+`;

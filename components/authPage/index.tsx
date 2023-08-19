@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-import { FormRefType } from '@/helpers/getFormData';
 import { FormType } from '@/containers/authPage/data';
+import { ErrorsType } from '@/containers/authPage';
 
 import AuthBanner from './authBanner';
 import AuthForm from './authForm';
 import { ButtonType } from '@/constants/types/global';
 
+type FormRefType = ReturnType<typeof useRef<HTMLFormElement>>;
 interface Props {
   authProviders: any;
   activeTab: string;
   data: FormType;
   tabs: ButtonType[];
-  inputRef: FormRefType;
+  errors: ErrorsType;
+  formRef: FormRefType;
   clickHandler: (id: string) => void;
   submitHandler: (e: React.MouseEvent) => void;
 }

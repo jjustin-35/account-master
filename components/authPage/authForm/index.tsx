@@ -1,9 +1,9 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
-import React from 'react';
+import React, { useRef } from 'react';
 
-import { FormRefType } from '@/helpers/getFormData';
+import { ErrorsType } from '@/containers/authPage';
 
 import ButtonTabs from './buttonTabs';
 import InputField from '@/components/fields/input';
@@ -18,7 +18,8 @@ interface Props {
   activeTab: string;
   data: FormType;
   tabs: ButtonType[];
-  inputRef: FormRefType;
+  errors: ErrorsType;
+  formRef: ReturnType<typeof useRef<HTMLFormElement>>;
   clickHandler: (id: string) => void;
   submitHandler: (e: React.MouseEvent) => void;
 }
@@ -28,7 +29,8 @@ const AuthForm = ({
   activeTab,
   data,
   tabs,
-  inputRef,
+  errors,
+  formRef,
   clickHandler,
   submitHandler,
 }: Props) => (
@@ -39,9 +41,9 @@ const AuthForm = ({
         activeTab={activeTab}
         clickHandler={clickHandler}
       />
-      <Form>
+      <Form ref={formRef}>
         {data.inputs.map((input, idx) => (
-          <InputField {...input} key={idx} inputRef={inputRef} />
+          <InputField {...input} key={idx} errorMsg={errors[input.name]} />
         ))}
         <ButtonWrapper>
           <Button {...data.submit} onClick={submitHandler} />
