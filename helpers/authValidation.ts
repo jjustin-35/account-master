@@ -16,7 +16,8 @@ export const emailValidation = (value: string) => {
 };
 
 export const passwordValidation = (value: string) => {
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   if (!value) {
     return errorMsgs.REQUIRE_AUTH_DATA;
   }
