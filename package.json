@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/is-prop-valid": "^1.2.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/bcrypt": "^5.0.0",
     "@types/node": "20.2.1",
