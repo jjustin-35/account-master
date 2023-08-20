@@ -29,7 +29,7 @@ const AuthPageContainer = ({ providers }: Props) => {
   const initTab = isSignUp ? 'signUp' : 'signIn';
 
   const [activeTab, setActiveTab] = useState(initTab);
-  const [errors, setErrors] = useState<ErrorsType>(null);
+  const [errors, setErrors] = useState<ErrorsType>({} as ErrorsType);
   const data: FormType = dataset[activeTab];
   const formRef = useRef<HTMLFormElement>(null);
   const tabs = Object.values(dataset).map((data) => data.tab);
