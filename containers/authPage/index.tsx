@@ -9,7 +9,6 @@ import { UserType } from '@/constants/types/modal';
 
 // import { postSignup as postSignupAction } from '@/redux/sagaActions/auth';
 import authValidation from '@/helpers/authValidation';
-import { REQUIRE_AUTH_DATA } from '@/constants/errorMsg';
 
 import AuthBanner from '@/components/authPage/authBanner';
 import AuthForm from '@/components/authPage/authForm';
@@ -19,6 +18,8 @@ interface Props {
   providers: any;
 }
 
+type TabType = 'signUp' | 'signIn';
+
 type FormDataType = UserType & Record<string, string>;
 
 export type InputDataType = {
@@ -27,16 +28,20 @@ export type InputDataType = {
   isRequired?: boolean;
 };
 
-export type ErrorsType = ReturnType<typeof authValidation>;
+export type ErrorsType = Record<string, string | null>;
+
+type ErrorStateType = {
+  [key in TabType]?: ErrorsType;
+};
 
 const AuthPageContainer = ({ providers }: Props) => {
   const searchParams = useSearchParams();
   const isSignUp = !!searchParams.get('isSignUp');
   const initTab = isSignUp ? 'signUp' : 'signIn';
+  const initErrors = { signIn: {}, signUp: {} } as ErrorStateType;
 
-  const [formData, setFormData] = useState<FormDataType>({} as FormDataType);
-  const [activeTab, setActiveTab] = useState(initTab);
-  const [errors, setErrors] = useState<ErrorsType>({} as ErrorsType);
+  const [activeTab, setActiveTab] = useState<TabType>(initTab);
+  const [errors, setErrors] = useState<ErrorStateType>(initErrors);
   const data: FormType = dataset[activeTab];
   const formRef = useRef<HTMLFormElement>(null);
   const tabs = Object.values(dataset).map((data) => data.tab);
@@ -44,33 +49,23 @@ const AuthPageContainer = ({ providers }: Props) => {
   // const postSignup = (data: UserType) => dispatch(postSignupAction(data));
 
   const clickHandler = (id: string) => {
-    setActiveTab(id);
-  };
-
-  const formDataHandler = (input: InputDataType) => {
-    const { name, value, isRequired } = input;
-    if (isRequired && !value) {
-      setErrors((prev) => ({
-        ...prev,
-        [input.name]: REQUIRE_AUTH_DATA,
-      }));
-      return;
-    }
-
-    return setFormData((prev) => ({ ...prev, [name]: value }));
+    setActiveTab(id as TabType);
   };
 
   const submitHandler = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    const data = formData;
+    const formData = new FormData(formRef.current);
+    const data = Object.fromEntries(formData.entries());
+    const errors = authValidation(data as FormDataType);
     const hasErrors = Object.values(errors).some((error) => error);
-    console.log('data', data);
 
     if (hasErrors) {
-      setErrors(errors);
+      setErrors({ [activeTab]: errors });
       return;
     }
+
+    console.log('data', data);
 
     // if (activeTab === 'signIn') {
     //   signIn('credentials', data);
@@ -92,9 +87,9 @@ const AuthPageContainer = ({ providers }: Props) => {
         authProviders={providers}
         activeTab={activeTab}
         formRef={formRef}
+        errors={errors[activeTab]}
         data={data}
         tabs={tabs}
-        formDataHandler={formDataHandler}
         clickHandler={clickHandler}
         submitHandler={submitHandler}
       />

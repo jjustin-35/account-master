@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { InputType } from '@/components/fields/input';
-import { InputDataType } from '@/containers/authPage';
+import { ErrorsType } from '@/containers/authPage';
 
 import {
   passwordValidation,
@@ -14,7 +14,7 @@ import InputField from '@/components/fields/input';
 interface Props {
   isSignIn: boolean;
   inputData: InputType;
-  formDataHandler: (input: InputDataType) => void;
+  error: string;
 }
 
 const confirmPassword: InputType = {
@@ -25,12 +25,12 @@ const confirmPassword: InputType = {
   isRequired: true,
 };
 
-const PasswordField = ({ isSignIn, inputData, formDataHandler }: Props) => {
+const PasswordField = ({ isSignIn, inputData, error }: Props) => {
   const { name } = inputData;
   const isPassword = name === 'password';
   if (!isPassword) return null;
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({ [name]: error } as ErrorsType);
   const [password, setPassword] = useState('');
   const hasError = Object.values(errors).some((error) => error);
 
@@ -62,7 +62,6 @@ const PasswordField = ({ isSignIn, inputData, formDataHandler }: Props) => {
         hasError={hasError}
         errorMsg={errors[inputData.name]}
         onBlur={blurHandler}
-        formDataHandler={formDataHandler}
       />
       {!isSignIn && (
         <InputField
@@ -70,7 +69,6 @@ const PasswordField = ({ isSignIn, inputData, formDataHandler }: Props) => {
           hasError={hasError}
           errorMsg={errors[confirmPassword.name]}
           onBlur={blurHandler}
-          formDataHandler={formDataHandler}
         />
       )}
     </>

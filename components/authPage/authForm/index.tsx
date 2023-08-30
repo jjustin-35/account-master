@@ -5,7 +5,6 @@ import React, { useRef } from 'react';
 
 import { FormType } from '@/containers/authPage/data';
 import { ButtonType } from '@/constants/types/global';
-import { InputDataType } from '@/containers/authPage';
 
 import ButtonTabs from './buttonTabs';
 import InputField, { InputType } from '@/components/fields/input';
@@ -18,36 +17,31 @@ import { Wrapper, Form, ButtonWrapper, HorizonLineWrapper } from './styled';
 interface FieldProps {
   inputData: InputType;
   activeTab: string;
-  formDataHandler: (input: InputDataType) => void;
+  error?: string;
 }
 interface Props {
   authProviders: any;
   activeTab: string;
   data: FormType;
+  errors: Record<string, string>;
   tabs: ButtonType[];
   formRef: ReturnType<typeof useRef<HTMLFormElement>>;
-  formDataHandler: (input: InputDataType) => void;
   clickHandler: (id: string) => void;
   submitHandler: (e: React.MouseEvent) => void;
 }
 
-const Field = ({ inputData, activeTab, formDataHandler }: FieldProps) => {
+const Field = ({ inputData, activeTab, error }: FieldProps) => {
   const { type } = inputData;
+
   if (type === 'email')
-    return (
-      <EmailField inputData={inputData} formDataHandler={formDataHandler} />
-    );
+    return <EmailField inputData={inputData} error={error} />;
   if (type === 'password') {
     const isSignIn = activeTab === 'signIn';
     return (
-      <PasswordField
-        isSignIn={isSignIn}
-        inputData={inputData}
-        formDataHandler={formDataHandler}
-      />
+      <PasswordField isSignIn={isSignIn} inputData={inputData} error={error} />
     );
   }
-  return <InputField {...inputData} />;
+  return <InputField {...inputData} errorMsg={error} />;
 };
 
 const AuthForm = ({
@@ -55,8 +49,8 @@ const AuthForm = ({
   activeTab,
   data,
   tabs,
+  errors,
   formRef,
-  formDataHandler,
   clickHandler,
   submitHandler,
 }: Props) => (
@@ -73,7 +67,7 @@ const AuthForm = ({
             key={idx}
             inputData={input}
             activeTab={activeTab}
-            formDataHandler={formDataHandler}
+            error={errors?.[input.name]}
           />
         ))}
         <ButtonWrapper>

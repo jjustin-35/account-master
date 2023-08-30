@@ -41,9 +41,26 @@ export const confirmPasswordValidation = (value: string, password: string) => {
   return null;
 };
 
+export const inputValidation = (value?: string) => {
+  if (!value) {
+    return errorMsgs.REQUIRE_VALUE;
+  }
+
+  return null;
+};
+
 const authValidation = (data: FormDataType) => {
-  const { email, password, confirmPassword } = data;
+  const { email, password, confirmPassword, ...anothers } = data;
+  const anothersErrors = Object.keys(anothers).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: inputValidation(anothers[key]),
+    }),
+    {},
+  );
+
   const errors = {
+    ...anothersErrors,
     email: emailValidation(email),
     password: passwordValidation(password),
     confirmPassword: confirmPasswordValidation(confirmPassword, password),

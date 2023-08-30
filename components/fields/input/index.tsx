@@ -1,7 +1,8 @@
-import { InputDataType } from '@/containers/authPage';
+import { useState } from 'react';
+
+import { inputValidation } from '@/helpers/authValidation';
 
 import { InputWrapper, Label, Input, ErrorMsg } from './styled';
-import { useEffect, useState } from 'react';
 
 export interface InputType {
   label: string;
@@ -13,7 +14,6 @@ export interface InputType {
   value?: string;
   inputRef?: React.RefObject<HTMLInputElement>;
   isRequired?: boolean;
-  formDataHandler?: (input: InputDataType) => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -29,24 +29,32 @@ const InputField = ({
   value,
   isRequired,
   inputRef,
-  formDataHandler,
   onChange,
   onFocus,
   onBlur,
 }: InputType) => {
-  const [inputData, setInputData] = useState({} as InputDataType);
+  const [error, setError] = useState(errorMsg);
+  const [isError, setIsError] = useState(hasError);
+
+  console.log('error', error);
+  console.log('isError', isError);
 
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { name, value, required } = e.target;
-    setInputData({ name, value, isRequired: required });
-    onBlur && onBlur(e);
-  };
+    if (onBlur) return onBlur(e);
 
-  useEffect(() => {
-    if (!formDataHandler) return;
-    if (hasError) return;
-    formDataHandler(inputData);
-  }, [inputData]);
+    const { value } = e.target;
+
+    const error = inputValidation(value);
+    if (error) {
+      setError(error);
+      setIsError(true);
+      return;
+    }
+
+    setError('');
+    setIsError(false);
+    return;
+  };
 
   return (
     <InputWrapper>
@@ -62,7 +70,7 @@ const InputField = ({
         onBlur={blurHandler}
         ref={inputRef}
       />
-      {hasError && errorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
+      {isError && error && <ErrorMsg>{errorMsg}</ErrorMsg>}
     </InputWrapper>
   );
 };

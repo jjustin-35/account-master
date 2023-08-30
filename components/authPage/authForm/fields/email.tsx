@@ -1,34 +1,47 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { InputType } from '@/components/fields/input';
-import { InputDataType } from '@/containers/authPage';
+import { ErrorsType } from '@/containers/authPage';
 
 import { emailValidation } from '@/helpers/authValidation';
 import InputField from '@/components/fields/input';
 
 interface Props {
   inputData: InputType;
-  formDataHandler: (input: InputDataType) => void;
+  error?: string;
 }
 
-const EmailField = ({ inputData, formDataHandler }: Props) => {
+const EmailField = ({ inputData, error }: Props) => {
   const { type, name } = inputData;
   if (type !== 'email') return null;
 
-  const [errors, setErrors] = useState({} as Record<string, string>);
-  const hasError = Object.values(errors).some((error) => error);
+  const [errors, setErrors] = useState({ [name]: error } as ErrorsType);
+  const [hasError, setHasError] = useState(false);
 
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+    console.log('blurHandler');
     const { name, value } = e.target;
 
     const error = emailValidation(value);
-    if (error) return setErrors({ [name]: error });
+    console.log('error validation', error);
+    if (error) {
+      setErrors({ [name]: error });
+      console.log('setErrors', errors);
+      setHasError(true);
+      return;
+    }
 
     setErrors({ [name]: null });
+    setHasError(false);
     return;
   };
+
+  useEffect(() => {
+    console.log('email error', error);
+    console.log('email hasError', hasError);
+  }, [error, hasError]);
 
   return (
     <InputField
@@ -36,7 +49,6 @@ const EmailField = ({ inputData, formDataHandler }: Props) => {
       errorMsg={errors[name]}
       hasError={hasError}
       onBlur={blurHandler}
-      formDataHandler={formDataHandler}
     />
   );
 };
