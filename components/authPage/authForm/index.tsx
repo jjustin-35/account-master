@@ -62,53 +62,51 @@ const AuthForm = ({
   formRef,
   clickHandler,
   submitHandler,
-}: Props) => {
-  return (
-    <Container>
-      <Wrapper>
-        <ButtonTabs
-          tabs={tabs}
-          activeTab={activeTab}
-          clickHandler={clickHandler}
-        />
-        <Form ref={formRef}>
-          {data.inputs.map((input, idx) => (
-            <Field
-              key={idx}
-              inputData={input}
-              activeTab={activeTab}
-              hasError={!!errorType[input.name]}
-            />
-          ))}
+}: Props) => (
+  <Container>
+    <Wrapper>
+      <ButtonTabs
+        tabs={tabs}
+        activeTab={activeTab}
+        clickHandler={clickHandler}
+      />
+      <Form ref={formRef}>
+        {data.inputs.map((input, idx) => (
+          <Field
+            key={idx}
+            inputData={input}
+            activeTab={activeTab}
+            hasError={!!errorType[input.name]}
+          />
+        ))}
+        <ButtonWrapper>
+          <Button {...data.submit} onClick={submitHandler} />
+        </ButtonWrapper>
+      </Form>
+      {activeTab === 'signIn' && (
+        <>
+          <HorizonLineWrapper>
+            <span>or</span>
+          </HorizonLineWrapper>
           <ButtonWrapper>
-            <Button {...data.submit} onClick={submitHandler} />
+            {authProviders &&
+              Object.values(authProviders).map((provider: any) => {
+                if (provider.id === 'credentials') {
+                  return null;
+                }
+                return (
+                  <Button
+                    key={provider.id}
+                    onClick={() => signIn(provider.id)}
+                    text={provider.name}
+                  />
+                );
+              })}
           </ButtonWrapper>
-        </Form>
-        {activeTab === 'signIn' && (
-          <>
-            <HorizonLineWrapper>
-              <span>or</span>
-            </HorizonLineWrapper>
-            <ButtonWrapper>
-              {authProviders &&
-                Object.values(authProviders).map((provider: any) => {
-                  if (provider.id === 'credentials') {
-                    return null;
-                  }
-                  return (
-                    <Button
-                      key={provider.id}
-                      onClick={() => signIn(provider.id)}
-                      text={provider.name}
-                    />
-                  );
-                })}
-            </ButtonWrapper>
-          </>
-        )}
-      </Wrapper>
-    </Container>
-  );
-};
+        </>
+      )}
+    </Wrapper>
+  </Container>
+);
 
 export default AuthForm;
