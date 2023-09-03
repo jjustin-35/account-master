@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { InputType } from '@/components/fields/input';
-import { ErrorsType } from '@/containers/authPage';
 
 import {
   passwordValidation,
@@ -14,7 +13,7 @@ import InputField from '@/components/fields/input';
 interface Props {
   isSignIn: boolean;
   inputData: InputType;
-  error: string;
+  hasError: boolean;
 }
 
 const confirmPassword: InputType = {
@@ -25,49 +24,64 @@ const confirmPassword: InputType = {
   isRequired: true,
 };
 
-const PasswordField = ({ isSignIn, inputData, error }: Props) => {
+const PasswordField = ({ isSignIn, inputData, hasError }: Props) => {
   const { name } = inputData;
   const isPassword = name === 'password';
   if (!isPassword) return null;
 
-  const [errors, setErrors] = useState({ [name]: error } as ErrorsType);
+  const [passwordErrors, setPasswordErrors] = useState('');
+  const [conformPasswordErrors, setConformPasswordErrors] = useState('');
   const [password, setPassword] = useState('');
-  const hasError = Object.values(errors).some((error) => error);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     if (name === 'password') {
       const error = passwordValidation(value);
-      if (error) return setErrors({ [name]: error });
+      if (error) return setPasswordErrors(error);
 
-      setErrors({ [name]: null });
+      setPasswordErrors('');
       setPassword(value);
+      return;
     }
 
-    if (name === 'confirmPassword') {
+    if (name === 'confirmPassword' && !isSignIn) {
       const error = confirmPasswordValidation(value, password);
-      if (error) return setErrors({ [name]: error });
+      if (error) return setConformPasswordErrors(error);
 
-      setErrors({ [name]: null });
+      setConformPasswordErrors('');
+      return;
     }
 
     return;
   };
 
+  useEffect(() => {
+    const input = passwordRef.current;
+    if (hasError) {
+      const pwError = passwordValidation(input.value);
+      if (pwError) return setPasswordErrors(pwError);
+    }
+
+    setPasswordErrors('');
+    setPassword(input.value);
+  }, [hasError]);
+
   return (
     <>
       <InputField
         {...inputData}
-        hasError={hasError}
-        errorMsg={errors[inputData.name]}
+        hasError={!!passwordErrors}
+        errorMsg={passwordErrors}
         onBlur={blurHandler}
+        inputRef={passwordRef}
       />
       {!isSignIn && (
         <InputField
           {...confirmPassword}
-          hasError={hasError}
-          errorMsg={errors[confirmPassword.name]}
+          hasError={!!conformPasswordErrors}
+          errorMsg={conformPasswordErrors}
           onBlur={blurHandler}
         />
       )}

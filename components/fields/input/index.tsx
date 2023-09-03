@@ -1,7 +1,3 @@
-import { useState } from 'react';
-
-import { inputValidation } from '@/helpers/authValidation';
-
 import { InputWrapper, Label, Input, ErrorMsg } from './styled';
 
 export interface InputType {
@@ -33,29 +29,6 @@ const InputField = ({
   onFocus,
   onBlur,
 }: InputType) => {
-  const [error, setError] = useState(errorMsg);
-  const [isError, setIsError] = useState(hasError);
-
-  console.log('error', error);
-  console.log('isError', isError);
-
-  const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (onBlur) return onBlur(e);
-
-    const { value } = e.target;
-
-    const error = inputValidation(value);
-    if (error) {
-      setError(error);
-      setIsError(true);
-      return;
-    }
-
-    setError('');
-    setIsError(false);
-    return;
-  };
-
   return (
     <InputWrapper>
       <Label htmlFor={name}>{label}</Label>
@@ -67,10 +40,10 @@ const InputField = ({
         required={isRequired}
         onChange={onChange}
         onFocus={onFocus}
-        onBlur={blurHandler}
+        onBlur={onBlur}
         ref={inputRef}
       />
-      {isError && error && <ErrorMsg>{errorMsg}</ErrorMsg>}
+      {hasError && errorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
     </InputWrapper>
   );
 };
