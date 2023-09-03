@@ -22,8 +22,6 @@ export const passwordValidation = (value: string) => {
 
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
   const isValidate = passwordRegex.test(value);
-  console.log('value: ', value);
-  console.log('isValidate: ', isValidate);
 
   if (!isValidate) {
     return errorMsgs.INVALID_PASSWORD;
