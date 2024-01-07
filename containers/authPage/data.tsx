@@ -1,5 +1,6 @@
 import { TypographyType, ButtonType } from '@/constants/types/global';
 import { InputType } from '@/components/fields/input';
+import { btnSizes, btnRounds, btnThemes } from '@/constants/uiTypes';
 
 export type FormType = {
   title: {
@@ -24,9 +25,9 @@ const data: DataType = {
     tab: {
       text: '登入',
       id: 'signIn',
-      size: 'medium',
-      round: 'pill',
-      btnTheme: 'primary',
+      size: btnSizes.medium,
+      round: btnRounds.pill,
+      btnTheme: btnThemes.primary,
     },
     inputs: [
       {
@@ -53,9 +54,9 @@ const data: DataType = {
     ],
     submit: {
       text: '登入',
-      size: 'medium',
-      round: 'normal',
-      btnTheme: 'primary',
+      size: btnSizes.medium,
+      round: btnRounds.normal,
+      btnTheme: btnThemes.primary,
     },
   },
   signUp: {
@@ -66,9 +67,9 @@ const data: DataType = {
     tab: {
       text: '註冊',
       id: 'signUp',
-      size: 'medium',
-      round: 'pill',
-      btnTheme: 'primary',
+      size: btnSizes.medium,
+      round: btnRounds.pill,
+      btnTheme: btnThemes.primary,
     },
     inputs: [
       {
@@ -98,9 +99,9 @@ const data: DataType = {
     ],
     submit: {
       text: '註冊',
-      size: 'medium',
-      round: 'normal',
-      btnTheme: 'primary',
+      size: btnSizes.medium,
+      round: btnRounds.normal,
+      btnTheme: btnThemes.primary,
     },
   },
 };
