@@ -36,5 +36,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Local Development
 To run the app locally, please use the password with yarn dev/build:
 ```
-PASSWORD=fromZoo751718 yarn dev
+PASSWORD=751718 yarn dev
 ```
