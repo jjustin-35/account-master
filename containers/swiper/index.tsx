@@ -21,7 +21,9 @@ const SwiperContainer = ({ children }: Props) => {
     scrollWidth: 0,
   });
   const [offset, setOffset, getOffsetRef] = useStateRef(0);
-  const [, setDirection, getDirectionRef] = useStateRef('' as 'left' | 'right');
+  const [, setDirection, getDirectionRef] = useStateRef<'left' | 'right'>(
+    'left',
+  );
   const [activePage, setActivePage] = useState(0);
   const slideWrapperRef = useRef<HTMLDivElement>(null);
   const minOffsetRef = useRef(0);
