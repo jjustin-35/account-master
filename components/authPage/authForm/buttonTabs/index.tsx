@@ -1,5 +1,6 @@
-import Button from '@/components/button';
+import { btnThemes } from '@/constants/uiTypes';
 import { ButtonType } from '@/constants/types/global';
+import Button from '@/components/button';
 import { ButtonGroup } from './styled';
 
 interface Props {
@@ -13,7 +14,9 @@ const ButtonTabs = ({ tabs, activeTab, clickHandler }: Props) => {
     <ButtonGroup>
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
-        const btnTheme = isActive ? 'primary' : 'primaryOutline';
+        const btnTheme = isActive
+          ? btnThemes.primary
+          : btnThemes.primaryOutline;
         return (
           <Button
             {...tab}

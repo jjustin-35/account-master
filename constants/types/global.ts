@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-  ButtonTheme,
-  ButtonSize,
-  ButtonRound,
-} from '@/components/button/styled';
+import { btnThemes, btnSizes, btnRounds } from '../uiTypes';
 
 export type ImageType = {
   src: string;
@@ -20,9 +16,9 @@ export type ButtonType = {
   text: string;
   id?: string;
   link?: string | NextLinkHrefType;
-  btnTheme?: ButtonTheme;
-  size?: ButtonSize;
-  round?: ButtonRound;
+  btnTheme?: btnThemes;
+  size?: btnSizes;
+  round?: btnRounds;
   onClick?: (e?: React.MouseEvent) => void;
 };
 

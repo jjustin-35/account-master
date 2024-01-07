@@ -1,7 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { RuleSet, css } from 'styled-components';
+import { btnThemes, btnSizes, btnRounds } from '@/constants/uiTypes';
 import colors from '@/constants/styles/colors';
 
-const themes = {
+const themes: Record<keyof typeof btnThemes, RuleSet<object>> = {
   primary: css`
     background-color: ${colors.primary};
     color: #ffffff;
@@ -23,7 +24,7 @@ const themes = {
   `,
 };
 
-const sizes = {
+const sizes: Record<keyof typeof btnSizes, RuleSet<object>> = {
   small: css`
     padding: 8px 16px;
     font-size: 14px;
@@ -38,7 +39,7 @@ const sizes = {
   `,
 };
 
-const borderRadius = {
+const borderRadius: Record<keyof typeof btnRounds, RuleSet<object>> = {
   normal: css`
     border-radius: 4px;
   `,
@@ -47,14 +48,10 @@ const borderRadius = {
   `,
 };
 
-export type ButtonTheme = keyof typeof themes;
-export type ButtonSize = keyof typeof sizes;
-export type ButtonRound = keyof typeof borderRadius;
-
 export const Wrapper = styled.a<{
-  $btnTheme?: string;
-  $size?: string;
-  $round?: string;
+  $btnTheme?: btnThemes;
+  $size?: btnSizes;
+  $round?: btnRounds;
 }>`
   display: inline-flex;
   justify-content: center;
