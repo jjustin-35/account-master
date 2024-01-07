@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const secureEnv = require('secure-env');
 
-global.env = secureEnv(`blue-bird${process.env.PASSWORD}`);
+global.env = secureEnv({secret: `blue-bird${process.env.PASSWORD}`});
 
 const nextConfig = {
   publicRuntimeConfig: {
