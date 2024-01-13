@@ -1,5 +1,11 @@
+import Header from '@/components/header';
+
 const Daily = () => {
-  return <>daily</>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default Daily;
