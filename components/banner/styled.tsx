@@ -29,10 +29,10 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h1<TypographyType>`
-  font-size: ${({ fontSize }) => fontSize || 24}px;
-  font-weight: ${({ fontWeight }) => fontWeight || 'bold'};
+  font-size: ${({ $fontSize }) => $fontSize || 24}px;
+  font-weight: ${({ $fontWeight }) => $fontWeight || 'bold'};
   color: ${({ color }) => color || '#000000'};
-  text-align: ${({ textAlign }) => textAlign || 'left'};
+  text-align: ${({ $textAlign }) => $textAlign || 'left'};
 `;
 
 export const Desc = styled.p<TypographyType>`

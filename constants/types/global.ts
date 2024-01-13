@@ -23,9 +23,9 @@ export type ButtonType = {
 };
 
 export type TypographyType = {
-  textAlign?: 'left' | 'center' | 'right';
-  color?: string;
-  fontSize?: string;
-  fontWeight?: string;
-  lineHeight?: string;
+  $textAlign?: 'left' | 'center' | 'right';
+  $color?: string;
+  $fontSize?: string;
+  $fontWeight?: string;
+  $lineHeight?: string;
 };

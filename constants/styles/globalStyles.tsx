@@ -23,9 +23,9 @@ export const Container = styled.div`
 `;
 
 export const Typography = css<TypographyType>`
-  font-size: ${({ fontSize }) => fontSize || '16px'};
-  font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
-  line-height: ${({ lineHeight }) => lineHeight || 'unset'};
-  color: ${({ color }) => color || '#000000'};
-  text-align: ${({ textAlign }) => textAlign || 'left'};
+  font-size: ${({ $fontSize }) => $fontSize || '16px'};
+  font-weight: ${({ $fontWeight }) => $fontWeight || 'normal'};
+  line-height: ${({ $lineHeight }) => $lineHeight || 'unset'};
+  color: ${({ $color }) => $color || '#000000'};
+  text-align: ${({ $textAlign }) => $textAlign || 'left'};
 `;

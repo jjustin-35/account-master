@@ -29,7 +29,7 @@ const data: DataType = {
   auth: {
     title: {
       text: '歡迎來到記帳大師',
-      textAlign: 'center',
+      $textAlign: 'center',
     },
     image: {
       src: '/images/common/account_master_icon.svg',

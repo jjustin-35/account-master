@@ -20,7 +20,7 @@ const data: DataType = {
   signIn: {
     title: {
       text: '登入',
-      textAlign: 'center',
+      $textAlign: 'center',
     },
     tab: {
       text: '登入',
@@ -62,7 +62,7 @@ const data: DataType = {
   signUp: {
     title: {
       text: '註冊',
-      textAlign: 'center',
+      $textAlign: 'center',
     },
     tab: {
       text: '註冊',
