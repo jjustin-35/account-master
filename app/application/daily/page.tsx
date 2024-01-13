@@ -1,5 +1,5 @@
 const Daily = () => {
-  return <></>;
+  return <>daily</>;
 };
 
 export default Daily;

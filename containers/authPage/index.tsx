@@ -57,6 +57,9 @@ const AuthPageContainer = ({ providers }: Props) => {
 
     if (hasError) return setErrorType(errors);
 
+    console.log('formRef', formRef.current);
+    console.log('formData', formData);
+
     if (activeTab === 'signIn') {
       signIn('credentials', formData);
       return;

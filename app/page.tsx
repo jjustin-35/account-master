@@ -1,20 +1,14 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-import Header from '@/components/header';
-import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
+// import Header from '@/components/header';
 
 const Home = () => {
-  const router = useRouter();
+  redirect('/application/daily');
 
-  useEffect(() => {
-    router.push('./application/daily');
-  }, []);
-  return (
-    <>
-      <Header />
-    </>
-  );
+  // return (
+  //   <>
+  //     <Header />
+  //   </>
+  // );
 };
 
 export default Home;
