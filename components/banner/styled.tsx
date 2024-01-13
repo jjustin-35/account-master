@@ -3,10 +3,10 @@ import breakpoints from '@/constants/styles/breakpoints';
 import { Typography } from '@/constants/styles/globalStyles';
 import { TypographyType } from '@/constants/types/global';
 
-export const Wrapper = styled.div<{ isReverse?: boolean }>`
+export const Wrapper = styled.div<{ $isReverse?: boolean }>`
   display: flex;
-  flex-direction: ${({ isReverse }) =>
-    isReverse ? 'column-reverse' : 'column'};
+  flex-direction: ${({ $isReverse }) =>
+    $isReverse ? 'column-reverse' : 'column'};
   align-items: center;
   gap: 16px;
 

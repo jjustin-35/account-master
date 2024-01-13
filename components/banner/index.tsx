@@ -13,7 +13,7 @@ const Banner = ({ variant }: Props) => {
   if (!data) return null;
   return (
     <Container>
-      <Wrapper isReverse={!!data.isReverse}>
+      <Wrapper $isReverse={!!data.isReverse}>
         <Content>
           {data.title && (
             <Title
