@@ -2,8 +2,8 @@ import { NextResponse as response } from 'next/server';
 
 import { UserType } from '@/constants/types/modal';
 
-import connectMongodb from '@/helpers/mongodb';
-import User from '@/models/user';
+import prisma from '@/lib/prisma';
+import encryptPassword from '@/helpers/password';
 
 export async function POST(req: Request) {
   try {
@@ -16,34 +16,45 @@ export async function POST(req: Request) {
 
     const { email, password, username, avatar } = userData;
 
-    await connectMongodb();
-
-    const user = await User.findOne({ email });
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
 
     if (user) {
       return response.json({
-        status: 'fail',
+        status: false,
         message: 'User already exist',
       });
     }
 
-    const newUser = new User<UserType>({
+    const encryptedPassword = await encryptPassword(password);
+
+    const newUser: UserType = {
       email,
-      password,
       username,
-      avatar,
+      password: encryptedPassword,
+      avatar: avatar,
+    };
+
+    const createdUser = await prisma.user.create({
+      data: newUser,
     });
 
-    await newUser.save();
+    if (!createdUser) {
+      return response.json({
+        status: false,
+        message: 'User create failed',
+      });
+    }
 
     return response.json({
-      status: 'success',
+      status: true,
       message: 'User created',
     });
   } catch (error: any) {
     console.log(error);
     return response.json({
-      status: 'error',
+      status: false,
       message: error.message,
     });
   }

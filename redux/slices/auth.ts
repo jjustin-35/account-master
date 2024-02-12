@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type AuthState = {
-  status: 'success' | 'fail' | 'error';
+  status: boolean;
   message: string;
 };
 

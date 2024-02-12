@@ -2,9 +2,8 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import FacebookProvider from 'next-auth/providers/facebook';
-
-import connectMongodb from '@/helpers/mongodb';
-import User from '@/models/user';
+import prisma from '@/lib/prisma';
+import { compareHashPassword } from '@/helpers/password';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -22,21 +21,24 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         const { email, password } = credentials;
         try {
-          await connectMongodb();
-
-          const user = await User.findOne({ email });
+          const user = await prisma.user.findUnique({
+            where: { email },
+          });
           if (!user) {
             return null;
           }
-          const isValid = await user.comparePassword(password);
+          const isValid = await compareHashPassword(
+            password,
+            user?.password || '',
+          );
 
           if (!isValid) {
             return null;
           }
 
-          const { _id, email: userEmail, username, avatar } = user;
+          const { id, email: userEmail, username, avatar } = user;
 
-          return { id: _id.toString(), username, avatar, userEmail };
+          return { id: id.toString(), username, avatar, userEmail };
         } catch (error) {
           console.log(error);
           return null;

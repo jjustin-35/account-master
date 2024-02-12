@@ -17,7 +17,7 @@ function* postUser(action: PayloadAction) {
       },
     });
     const respData = yield response.json();
-    if (respData.status === 'error' || respData.status === 'fail') {
+    if (!respData.status) {
       yield put(authActions.postSignupFail(respData));
       return;
     }
@@ -26,7 +26,7 @@ function* postUser(action: PayloadAction) {
   } catch (error) {
     console.log(error);
     yield put(
-      authActions.postSignupFail({ status: 'error', message: error.message }),
+      authActions.postSignupFail({ status: false, message: error.message }),
     );
   }
 }
