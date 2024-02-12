@@ -3,7 +3,7 @@ import Header from '@/components/header';
 const Daily = () => {
   return (
     <>
-      <Header />
+      <Header type="app" />
     </>
   );
 };

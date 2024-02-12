@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import colors from '@/constants/styles/colors';
 import breakpoints from '@/constants/styles/breakpoints';
+import { HeaderType } from '.';
 
 export const Wrapper = styled.div<{ $isBoxShadow: boolean }>`
   display: flex;
@@ -11,6 +12,7 @@ export const Wrapper = styled.div<{ $isBoxShadow: boolean }>`
   position: sticky;
   top: 0;
   z-index: 1;
+  min-height: 68px;
 
   ${({ $isBoxShadow }) =>
     $isBoxShadow &&
@@ -68,7 +70,10 @@ export const ButtonGroup = styled.div`
   }
 `;
 
-export const BurgarMenuWrapper = styled.div<{ $isOpen: boolean }>`
+export const BurgarMenuWrapper = styled.div<{
+  $isOpen: boolean;
+  $type: HeaderType;
+}>`
   position: relative;
   width: 30px;
   height: 24px;
@@ -81,6 +86,12 @@ export const BurgarMenuWrapper = styled.div<{ $isOpen: boolean }>`
     background-color: #000000;
     transition: all 0.3s;
     transform: scale(0.8);
+
+    ${({ $type }) =>
+      $type === 'app' &&
+      css`
+        background-color: ${colors.primary};
+      `}
 
     &:nth-child(1) {
       top: 0;

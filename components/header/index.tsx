@@ -21,20 +21,23 @@ import {
 } from './styled';
 import data from './data';
 
+export type HeaderType = 'normal' | 'app';
+
 interface BugerMenuProps {
   onClick: () => void;
   isOpen: boolean;
+  type: HeaderType;
 }
 
-const BurgerMenu = ({ onClick, isOpen }: BugerMenuProps) => (
-  <BurgarMenuWrapper $isOpen={isOpen} onClick={onClick}>
+const BurgerMenu = ({ onClick, isOpen, type }: BugerMenuProps) => (
+  <BurgarMenuWrapper $isOpen={isOpen} $type={type} onClick={onClick}>
     {[...Array.from({ length: 3 })].map((_, idx) => {
       return <span key={idx} />;
     })}
   </BurgarMenuWrapper>
 );
 
-const Header = () => {
+const Header = ({ type = 'normal' }: { type?: HeaderType }) => {
   if (!data) return;
   const { data: user } = useSession();
   const buttonData = user ? data.signOutButtons : data.signInButtons;
@@ -71,9 +74,11 @@ const Header = () => {
   return (
     <Container>
       <Wrapper $isBoxShadow={isBoxShadow}>
-        <Link href="/">
-          <Logo {...data.logo} />
-        </Link>
+        {type === 'normal' && (
+          <Link href="/">
+            <Logo {...data.logo} />
+          </Link>
+        )}
         <MenuGroup>
           <Menu>
             {data.menu.map((item, idx) => (
@@ -87,10 +92,17 @@ const Header = () => {
               <Button key={idx} {...item} onClick={authHandler} />
             ))}
           </ButtonGroup>
-          <BurgerMenu onClick={clickHandler} isOpen={isMenuOpen} />
+          <BurgerMenu type={type} onClick={clickHandler} isOpen={isMenuOpen} />
         </MenuGroup>
       </Wrapper>
-      {isTablet && <MobileMenu isMenuOpen={isMenuOpen} menu={data.menu} />}
+      {isTablet && (
+        <MobileMenu
+          isMenuOpen={isMenuOpen}
+          menu={data.menu}
+          buttons={buttonData}
+          authHandler={authHandler}
+        />
+      )}
     </Container>
   );
 };
