@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "prestart": "next build",
+    "prestart": "yarn prisma:push",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "prisma:push": "prisma db push",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.1",
+    "@prisma/client": "^5.9.1",
     "@reduxjs/toolkit": "^1.9.5",
     "bcrypt": "^5.1.0",
     "eslint-config-next": "13.4.2",
