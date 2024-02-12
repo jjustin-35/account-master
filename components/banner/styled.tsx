@@ -8,7 +8,7 @@ export const Wrapper = styled.div<{ $isReverse?: boolean }>`
   flex-direction: ${({ $isReverse }) =>
     $isReverse ? 'column-reverse' : 'column'};
   align-items: center;
-  gap: 16px;
+  /* gap: 16px; */
 
   @media (${breakpoints.laptop}) {
     flex-direction: row;

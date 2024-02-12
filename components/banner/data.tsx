@@ -28,11 +28,11 @@ const data: DataType = {
   },
   auth: {
     title: {
-      text: '歡迎來到記帳大師',
+      text: '歡迎來到青鳥記帳',
       $textAlign: 'center',
     },
     image: {
-      src: '/images/common/account_master_icon.svg',
+      src: '/images/common/blue-bird-counting-logo.svg',
       alt: 'img-account-master-icon',
     },
     isReverse: true,

@@ -1,7 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { Container } from '@/constants/styles/globalStyles';
-import { Wrapper, Content, Title, Desc, Image } from './styled';
+import { Wrapper, Content, Title, Desc } from './styled';
 import dataset from './data';
 
 type Props = {
@@ -32,11 +33,7 @@ const Banner = ({ variant }: Props) => {
             />
           )}
         </Content>
-        {data.image && (
-          <Image>
-            <img {...data.image} />
-          </Image>
-        )}
+        {data.image && <Image {...data.image} width={120} height={120} />}
       </Wrapper>
     </Container>
   );
