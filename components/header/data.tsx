@@ -1,4 +1,5 @@
 import { ImageType, ButtonType } from '@/constants/types/global';
+import { btnRounds, btnThemes } from '@/constants/uiTypes';
 
 type MenuType = {
   text: string;
@@ -14,7 +15,7 @@ type DataType = {
 
 const data: DataType = {
   logo: {
-    src: '/images/common/account_master_logo.svg',
+    src: '/images/common/blue-bird-counting-logo-horizontal.svg',
     alt: 'header-logo',
   },
   menu: [
@@ -30,8 +31,8 @@ const data: DataType = {
   signInButtons: [
     {
       text: 'Sign In',
-      btnTheme: 'primary',
-      round: 'pill',
+      btnTheme: btnThemes.primary,
+      round: btnRounds.pill,
     },
     {
       text: 'Sign Up',
@@ -39,15 +40,15 @@ const data: DataType = {
         pathname: '/auth',
         query: { isSignUp: 'true' },
       },
-      btnTheme: 'primaryOutline',
-      round: 'pill',
+      btnTheme: btnThemes.primaryOutline,
+      round: btnRounds.pill,
     },
   ],
   signOutButtons: [
     {
       text: 'Sign Out',
-      btnTheme: 'primary',
-      round: 'pill',
+      btnTheme: btnThemes.primary,
+      round: btnRounds.pill,
     },
   ],
 };
