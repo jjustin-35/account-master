@@ -12,7 +12,6 @@ export const Wrapper = styled.div<{
   overflow: hidden;
   z-index: 5;
   transition: height 0.3s;
-  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -28,6 +27,7 @@ export const Menu = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 16px;
 `;
 
 export const MenuItem = styled.a`
