@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const userData = await req.json();
     if (!userData)
       return response.json({
-        status: 'error',
+        status: false,
         message: 'Bad request',
       });
 
