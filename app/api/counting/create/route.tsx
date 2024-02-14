@@ -1,29 +1,11 @@
 import { NextResponse as response } from 'next/server';
 import prisma from '@/lib/prisma';
 
-enum TransactionType {
-  INCOME = 'INCOME',
-  EXPENSE = 'EXPENSE',
-  DEPOSIT = 'DEPOSIT',
-}
-
-type TransactionItemType = {
-  transactionType: TransactionType;
-  categoryType: string;
-  subCategoryType: string;
-};
-
-type DataType = {
-  date: Date;
-  name: string;
-  amount: number;
-  type: TransactionItemType;
-  userEmail: string;
-};
+import type { DailyTransactionType } from '@/constants/types/modal';
 
 export async function POST(req: Request) {
   try {
-    const data: DataType = await req.json();
+    const data: DailyTransactionType = await req.json();
     if (!data)
       return response.json(
         {
@@ -109,6 +91,11 @@ export async function POST(req: Request) {
         { status: 500 },
       );
     }
+
+    return response.json({
+      status: true,
+      message: 'Daily transactions updated',
+    });
   } catch (err) {
     console.log(err);
     return response.json(

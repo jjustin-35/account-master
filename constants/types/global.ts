@@ -2,6 +2,12 @@ import React from 'react';
 
 import { btnThemes, btnSizes, btnRounds } from '../uiTypes';
 
+export type ApiReturnType = {
+  status: boolean;
+  message: string;
+  data?: any;
+};
+
 export type ImageType = {
   src: string;
   alt: string;
