@@ -9,6 +9,7 @@ const Home = () => {
   //     <Header />
   //   </>
   // );
+  return <></>;
 };
 
 export default Home;

@@ -7,8 +7,8 @@ import StyledComponentsRegistry from '@/lib/styledComponentRegistry';
 import GlobalStyle from './_globalStyle';
 
 export const metadata = {
-  title: '記帳大師',
-  description: '記帳大師',
+  title: '青鳥記帳',
+  description: '青鳥記帳',
 };
 
 interface Props {
